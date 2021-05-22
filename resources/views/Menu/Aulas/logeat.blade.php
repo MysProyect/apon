@@ -2,12 +2,14 @@
  <div class="wrapper fadeInDown">
 
   <div id="formContent">
-
-    <div class="fadeIn first img-av">
-        <div align="right">
-       <img src="{{asset('images/icons/close.png')}}" wire:click="close" width="5"  class="close" style="cursor: pointer;"  title="cerrar">
+       <div align="right">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true close-btn"><img src="{{asset('images/icons/close.png')}}" width="40" wire:click="close"></span>
+          </button>
      </div>
-  		<strong class="text-center display-7">Entrar al Aula Virtual</h3>
+    <div class="fadeIn first img-av">
+     
+  		<h3 class="text-center display-5">Entrar al Aula Virtual</h3>
   		<p class="display-6 text-primary ">{{$curso->title}}</p>
         <img src="{{asset('images/icons/acceso.png')}}"  >
     </div>
@@ -22,12 +24,13 @@
       </div>
       
       <input type="text" wire:model="curso_id" class="d-lg-none"> 
+      <div class="alert-danger text-center">{{$failAuth}}</div>
       <br><br>
       <DIV>
 			  <button  wire:click="Acceder" class="fadeIn fourth btn btn-primary btn-lg" style="width:29%;">Acceder</button>
 		  </DIV>	
 
-      <div class="alert-danger text-center">{{$failAuth}}</div>
+      
     </div>
 
 <!-- 
@@ -43,7 +46,7 @@
 			</div> -->
       <br>
       <div align="right">
-        <input type="button" wire:click="olvido" class="btn btn-warning" value="Olvido sus datos de acceso?">
+        <input type="button" wire:click="olvido" class="btn btn-danger" value="Olvido sus datos de acceso?">
       </div>
      
   </div>

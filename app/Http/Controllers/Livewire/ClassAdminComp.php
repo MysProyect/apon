@@ -232,7 +232,7 @@ public function upload_save(Request $request){
 		return back()->with('mensaje','Guardados/Actualizados correctamente');
 	}else{
 	   	$this->default();
-	   	return back()->with('error','datos no actualizados');
+	   	return back()->with('error','Error de al intentar guarda el registro, verif');
 	}
 }
 

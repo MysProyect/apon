@@ -10,7 +10,7 @@
 	</div>
 
 	<div align="left" class="text-success display-6">
-		Leccion: {{$show}}	
+		Leccion {{$lecId->leccion}}		
 	</div>
 
 		<!-- 	<div  class="">
@@ -22,9 +22,9 @@
 		        @foreach($lecfiles as $fl)
 		        	<?php if(Str::endsWith($fl->file,['.png','.jpg','.jpeg','.gif','.bmp', '.gim','svg'])){ ?>
 		               <div class="item">
-		                 <img src="{{ Storage::url("$fl->file") }}" alt="Archivo no encontrado" class="img-tam">
+		                 <img src="{{ Storage::url("$fl->file") }}" alt="Archivo no encontrado" class="img-lec">
 		                 <a href='/storage/{{$fl->file}}' class="display-8 text-center" ><br>
-		                 	<img src="{{asset('images/icons/show-2.png')}}" title="ver/descargar" width="20" height="20" height="40"></a>
+		                 	<img src="{{asset('images/icons/show-2.png')}}" title="ver/descargar" width="50" ></a>
 		                </div>
 		              <?php }?>
 		        @endforeach
@@ -46,8 +46,8 @@
 	<br>
 
 
-		@if($lec->urlExt)
-			  <iframe width="560" height="315" src="<?php echo $lec->urlExt ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+		@if($lecId->urlExt)
+			  <iframe width="560" height="315" src="<?php echo $lecId->urlExt ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
 		@endif
 		<div class="container-2">
 				<img src="{{asset('images/icons/documnt.svg')}}" style="width: 10%; height: 2%;" title="document's">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -62,17 +62,16 @@
 				@endforeach
 			</div>
 
-
-@if(!($lecfiles->count() && $lec))
+@if(!($lecfiles->count() && $lecId))
 	<label class="text-center display-6 text-danger">Esta Leccion esta Vacia </label>
 @endif
 <br><br>
 		<div align="center" class="form-gruop">
 			<div  class="">
-				<label>{{$lec->texto}}</label>
+				<label>{{$lecId->texto}}</label>
 			</div>
-			@if ($lec->url)
-				<b>Visite:</b> <a target="_blank" href="{{$lecc->url}}">{{$lecc->url}}</a>
+			@if ($lecId->url)
+				<b>Visite:</b> <a target="_blank" href="{{$lecId->url}}">{{$lecId->url}}</a>
 			@endif
 		</div>
 </div>

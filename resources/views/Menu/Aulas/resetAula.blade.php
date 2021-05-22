@@ -1,11 +1,13 @@
 
  <div class="wrapper fadeInDown">
 
-  <strong class="display-6"> Restablecer datos de acceso</strong>
+  <h1 class="display-6"> Restablecer datos de acceso</h1>
     
   <div id="formContent">
       <div align="right">
-       <img src="{{asset('images/icons/close.png')}}" wire:click="close"   class="img-clear" style="cursor: pointer;"  title="cerrar">
+         <button type="button" class="close" wire:click="close"  data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true close-btn"><img src="{{asset('images/icons/close.png')}}" width="50" ></span>
+          </button>
       </div>
     <div class="">   
 		  <div style="padding:2%;">
@@ -37,17 +39,8 @@
       <DIV>
 			  <button  wire:click="Savereset" class="fadeIn fourth btn btn-success" style="width:29%;">Actualizar</button>
 		  </DIV>
-  @if ($errors->has('usuario')) 
-      <div class="alert alert-danger" role="alert">
-        {{ $errors->first('usuario') }}
-  @elseif($errors->has('email'))
-        { $errors->first('email') }}
-  @elseif($errors->has('password'))
-        { $errors->first('password') }}
-       </div>
-  @endif      
-     
- 
+   
+
 </div>
  
 

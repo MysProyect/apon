@@ -24,7 +24,7 @@
 
 	    	
 		<div align="center" style=" margin-top: 2%;">
-				<img src="{{asset('images/pasar.gif')}}" class="cursor">
+				<img src="{{asset('images/ir.gif')}}" class="cursor">
 				<img src="{{asset('images/continue.png')}}" width="200"  wire:click="continue" class="cursor">
 		</div>
 	</div>

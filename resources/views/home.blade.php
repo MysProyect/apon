@@ -3,7 +3,7 @@
 @section('content')	         
  <div style="display: flex;  margin-top: 2%;">
 
-	<div style="margin-right: 2%;">
+	<div style="margin-right: 1%;">
 		<span class="text-info">Documentacion</span><br>
 		<a target="_blank" href="{{asset('APON.pdf')}}">
 			<img src="{{asset('images/icons/PDF.png')}}" title="ver/descargar" class="pdf"> 
@@ -13,7 +13,7 @@
 
  	<div  style="font-family: 'Niconne', cursive;" class="text-center">
 		<small  class="display-5 text-primary">Convencidos que los mejores tiempos </small>
-		<small class="display-7 text-success">¡son estos que vivimos! </small> <br>
+		<small class="display-6 text-success">¡son estos que vivimos! </small> <br>
 		<img src="{{asset('images/Apon.png')}}" class="apon" >	
 	</div> 
    	<div  style="margin-left: 5%;" class="img-write" >
@@ -43,13 +43,16 @@
 	<img src="{{asset('images/cursos.gif')}}" title="Cursos" >
 	<!-- <img src="{{asset('images/cursos-online.png')}}" class="curs-home"> -->
 	</a>	
+	<img src="{{ asset('images/tool.gif') }}" class="none" >
 </div> 
-<div align="left" class="flex">
-	<img src="{{asset('images/AV.png')}}" class="">	
-		<a class="nav-link text-center" href="{{ route('aulas')}}" id="aula">
-			
-		Aula Virtual
+
+<div align="right">
+
+		<a class="nav-link text-center" href="{{ route('aulas')}}" id="aula" title="Tu Aula Virtual - Entrar">
+				<img src="{{asset('images/GIF/clases-online.gif')}}" >		
+		
 	</a>
+
 </div>
 
 

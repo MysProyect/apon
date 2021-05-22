@@ -8,7 +8,11 @@
 	
 <!-- 		<img src="{{asset('images/reg.jpg')}}" class="img-insc"> -->
 
-		
+		  	@if (session('alert'))
+				<div class="alert alert-success">             
+					<small>{{ session('alert') }}  </small>
+				</div>
+			@endif
 			
 			 
 				<div class="form-group ">
@@ -17,11 +21,7 @@
 							@error('cedula')
 								<label class="alert-danger text-8">identificacion obligaroria | invalid</label>
 							@enderror
-						  	@if (session('alert'))
-								<div class="alert alert-success">             
-									<small>{{ session('alert') }}  </small>
-								</div>
-							@endif
+						
 					<input type="text"   wire:model="name" class="form-control" autocomplete="on" placeholder="Name(s)" value="{{ old('name') }}"> 
 							@error('name')
 								<label class="alert-danger text-8">Nombre</label>

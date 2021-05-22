@@ -49,13 +49,20 @@
 			    	<label class="text-primary display-6">Nota</label>
 			    		<textarea class="nav-link form-control" wire:model="texto" rows="3"  cols="200" placeholder="Escriba informacion que considere importante o de referencia para esta seccion"></textarea>
 				</div>
+			
+
+
 				<div class="form-group">
-					<label class="display-6 text-primary">Visible<input type="radio" id="public" wire:model="visibility" value="1"></label>
-					<label class="display-8"> No aun<input type="radio" id="public" wire:model="visibility" value="0"> </label>
-					@error('visibility')
-						<label class="alert-danger">¿Inique si estara visible o no?</label>
-					@enderror
+					<label class="display-6 text-primary">Visible
+						<input type="radio" id="public" wire:model="visibility" value="1"></label>
+					<label class="display-6 text-danger"> No aun
+						<input type="radio" id="public" wire:model="visibility" value="0"> </label>
+						@error('visibility')
+							<label class="alert-danger">¿Inique si estara visible o no?</label>
+						@enderror
 				</div>
+
+
 				<div>
 		    		<button type="submit" class="btn btn-primary btn-block">Subir y Guardar información</button>
 		    		 <img src="{{asset('images/icons/clear.png')}}" wire:click="clear"  class="img-clear" style="cursor: pointer;"  title="borrar">

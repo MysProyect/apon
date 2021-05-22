@@ -19,7 +19,7 @@ class CreateLeccionsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('clase_id')->nullable();
             $table->unsignedBigInteger('leccion');
-            $table->string('texto')->nullable();
+            $table->text('texto')->nullable();
             $table->string('url')->nullable();
             $table->string('urlExt')->nullable();
             $table->integer('visibility')->default('1');

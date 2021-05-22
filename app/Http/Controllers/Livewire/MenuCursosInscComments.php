@@ -199,7 +199,15 @@ class MenuCursosInscComments extends Component
 			$this->default();
 			$this->view_insc = '';
 		}
-		return back()->with('mensaje','Ya te has registrado, pronto le sera notificada su confirmacion e inicio del curso');		
+		if($insc) {
+			return back()->with('mensaje','Ya te has registrado, pronto le sera notificada su confirmacion e inicio del curso');
+		}else{
+
+			$this->insc();
+			request () -> session () -> flash ('alert','Verifique su informacion, e intente de nuevo');	
+			//return flash()->with('error','Verifique su informacion, e intente de nuevo');
+		}
+				
 	}
 
 

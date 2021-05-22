@@ -3,12 +3,18 @@
 		@include('Admin.Class.list')
 	@else
 	
-<br><br>
-	<div align="right">
-		<label align="right"  class="cursor-m text-center" wire:click="list" >
-			<img src="{{asset('images/reg.png')}}" width="100"  title="Lista Class" ><br><span  class="text-primary display-6">Lista de clases</span>
-		</label>
-	</div>
+		<div style="display: flex;">
+			<div>
+				<img src="{{asset('images/admin-class.gif')}}" class="cursor">
+			</div>
+			
+			<div style="margin-left: 30%">
+				<label   class="cursor-m text-center" wire:click="list" >
+					<img src="{{asset('images/reg.png')}}" width="100"  title="Lista Class" ><br><span  class="text-primary display-6">Lista de clases</span>
+				</label>
+			</div>
+		</div>
+	
 		 	@if (session('mensaje'))
 				<div class="alert alert-success">             
 					{{ session('mensaje') }}

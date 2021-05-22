@@ -46,7 +46,7 @@ footer{ width:100%;   height: auto;  position: absolute; bottom: 0; color: black
 }
 .img-tam{width:70%; height:120%;}
 
-
+.img-lec{width:100%;}
 
 
 .text {
@@ -81,7 +81,9 @@ footer{ width:100%;   height: auto;  position: absolute; bottom: 0; color: black
 }*/
 
 
-#aula{
+
+@media screen and (max-width:800px) {
+	#aula{
         font-size: 4rem;
         text-align: center;
         color:    #1fcd44  ;
@@ -97,12 +99,28 @@ footer{ width:100%;   height: auto;  position: absolute; bottom: 0; color: black
 }
 
 
+}
+#aula{
+        font-size: 2.5rem;
+        text-align: center;
+        color:    #1fcd44  ;
+        font-family:  cursive;
+        font-weight: 500;
+  /*    text-shadow: 5px 5px 0px   #b1f0f9, 
+                  10px 10px 0px  #51d6e8 , 
+                  15px 15px 0px    #36b7c9, 
+                  20px 20px 0px   #2c9dad, 
+                  25px 25px 0px   #208998, 
+                  30px 30px 0px   #1c7581, 
+                  35px 35px 0px   #14545d;*/
+}
+
+
 #aula:hover{
-          font-size: 4rem;
         text-align: center;
         color:        #358f23   ;
         font-family: cursive;
-        font-weight: 500;
+        font-weight: 700;
          text-shadow: 5px 5px 0px   #8af592, 
                   10px 10px 0px     #6bdd73, 
                   15px 15px 0px     #59ca62, 
@@ -170,9 +188,9 @@ footer{ width:100%;   height: auto;  position: absolute; bottom: 0; color: black
 .img-pago{width: 20%; }
 .img-left{width:100%; height:30%;}
 .img-left-2{width:60%; height:30%; float: center;}
-.img-tool-admin img{  width:20%; height: 20%; }
+.img-tool-admin img{  width:20%; }
 .img-tool-admin2 img{  width:50%; height: 30%; }
-.img-tool-admin-msj img{  width:30%; height: 20%; }
+.img-tool-admin-msj img{  width:50%; height: 20%; }
 .img-icon{ width:15%; }
 .img-btn-new img{width: 10%;}
 td .img-ver-edit{ width: 20%; height: 10%;}
@@ -208,6 +226,9 @@ th .img-show-edit-2{ width: 20%; }
  	.img-insc{	width:10%; height:10%; }
  	.img-footer{width: 15%;}
  	.img-user img{width: 100%;}
+ 	.img-tool-admin img{  width:80%; }
+ 	.img-tool-admin2 img{  width:100%; height: 50%; }
+ 	.img-tool-admin-msj img{  width:100%; }
 
  /*	.img-msj{ width: 30%; height:15% }*/
 }

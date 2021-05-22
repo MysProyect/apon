@@ -2,6 +2,7 @@
 			<div style="display: flex; margin-top: 3%;">
 				<div style="display: block;">
 					<div>
+						
 						<select wire:model="curso_id" class="btn btn-success" wire:change="change_curso" style=" font-size: 1.5rem;">
 					 		<option value="">Seleccione el curso</option>
 					 		@foreach($cursos as $curso)

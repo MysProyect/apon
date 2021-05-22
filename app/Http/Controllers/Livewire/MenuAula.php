@@ -23,9 +23,9 @@ class MenuAula extends Component
 	public $decid, $insc;  
 	public $cedula, $usuario, $password, $password_confirmation, $email; //array
 	public $auth, $failAuth; //auhtenticacion
-	public $clas, $lec, $show, $cont;
+	public $clas, $lec, $cont;
 	public $lecc, $clases_leccions; //view aula bienvenido
-	public $resetAula, $Usua_AUt, $Preg_regist;
+	public $resetAula,  $aulaUser, $Preg_regist;
 	
 	public $lecfiles;
 	
@@ -154,8 +154,10 @@ public function regist($id){
 
 
 public function verif($id){ 
+	$this->part = '';
 		$this->validate(['cedula' => 'required']); 
 		$part = Participant::where('cedula',$this->cedula)->first();
+		$this->part = $part;
 		if ($part){
 			$insc = Incription::where('part_id',$part->id)->where('curso_id',$this->curso_id)->where('conf', 1)->first();
 			//$this->insc = $insc;
@@ -194,9 +196,10 @@ public function verif($id){
 		// 	return back()->with('alert', 'Disculpe!, no esta registrado en nuestra base');
 		// 	 		  //return back()->with('alert','Datos ya Registrados');
 		}else{
-			$this->close();
+			// $this->close();
 			$this->clear();
-			return back()->with('alert','No existe en nuestra base de datos, puede 	que no se haya inscrito');
+			//return back()->with('alert','No existe en nuestra base de datos, puede 	que no se haya inscrito');
+			request () -> session () -> flash ('alert','No existe en nuestra base de datos, puede 	que no se haya inscrito');	
 			
 		}
 
@@ -290,26 +293,21 @@ public function verif($id){
 
 
 
-
-
 	public function resetAula($id){
+		$this->clear();
 		$this->curso = Curso::where('id',$this->curso_id)->first();
 		$clas = Clase::where('curso_id',$this->curso_id)->first();
+		$this->clas = $clas->id;
 		$part = Participant::where('id',$id)->first();
-		$aula = UserAulas::where('clase_id', $clas->id)->where('part_id',$part->id)->first();
-		$this->usuario = $aula->usuario;
-		$this->email = $aula->email;
-		$this->regist = '';
-		$this->continue = '';
-		$this->UserAula = '';
-		$this->iniciar= '';
-		$this->verif = '';
+		$this->part = $part;
+		$aula = UserAulas::where('clase_id', $clas->id)->where('part_id',$part->id)->first();		
 		$this->resetAula = true;
+		$this->clearResetAula();
 		$this->usuario = $aula->usuario;
 		$this->email = $aula->email;
-		$this->password = '';
-		$this->Usua_Ant = $aula->usuario;
+		
 	}
+
 
 
 	public function Savereset(){
@@ -317,78 +315,37 @@ public function verif($id){
 	        'usuario' => 'required|min:5|max:10',
 	        'password' => 'required|min:5|max:10|confirmed',
 	        ]);
-		if ($this->Usua_Ant != $this->usuario){
-			$user = UserAulas::where('usuario',$this->usua_Ant)->first();
-			if ($user){
-				$this->validate([
-					'usuario' => 'unique:user_aulas']);
-			}
-		}else{
-			$clas = Clase::where('curso_id',$this->curso_id)->first();
-			//$this->clas = $clas;
-			$part = $this->part;
-			$aula = UserAulas::where('clase_id', $clas->id)->where('part_id',$part->id)->first();	        
-	        $aula->usuario = $this->usuario;
+		$aula = UserAulas::where('clase_id', $this->clas)->where('part_id',$this->part->id)->first();	
+		$this->aulaUser= $aula->usuario;
+		if ($aula->usuario != $this->usuario){
+			//$this->var='distintas';
+		 		$this->validate([
+		 			'usuario' => 'unique:user_aulas']);
+		}
+		// 	// $clas = Clase::where('curso_id',$this->curso_id)->first();
+		// 	//$this->clas = $clas;
+		// 	// $part = $this->part;
+	       $aula->usuario = $this->usuario;
 	        $aula->email = $this->email;
 	        $aula->password = bcrypt($this->password);
-			$aula->save();
-			$this->resetAula = '';
-			$this->logeat = true;
-			$this->usuario = '';
-			$this->password = '';
-			$this->email = '';
-		}
+		 	$aula->save();
+		 	$this->resetAula = '';
+		 	$this->logeat = true;
+		// 	$this->usuario = '';
+		// 	$this->password = '';
+		// 	$this->email = '';
+	
 
 	}
 
-
-
-
-
-
-
-
-
-	public function aula($id){
-		$this->aula = true; //ACCEDIENDO atraves del registro
-		$clas = Clase::where('curso_id',$this->curso_id)->first();
-		$curso = Curso::where('id',$this->curso_id)->first();
-		$this->clas = $clas;
-		$lec = Leccion::where('clase_id', $clas->id)->orderBy('id','asc')->get();
-		$this->lec = $lec;
+	public function clearResetAula(){
+		$this->verif = '';
+		$this->regist = '';
+		$this->continue = '';
+		$this->UserAula = '';
+		$this->iniciar= '';
+		$this->password = '';
 	}
-		
-		// $this->aulaExiste='';
-		// $this->reg='';
-		// $this->acceder='';
-		// $this->ir='';
-		
-		//return back()->with('mensaje','Datos Registrados');
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -446,24 +403,48 @@ public function verif($id){
 
 
 
-	public function show_lecc($id, $user){
+
+
+
+	public function aula($id){
+		$this->aula = true; //ACCEDIENDO atraves del registro
+		$clas = Clase::where('curso_id',$this->curso_id)->first();
+		$curso = Curso::where('id',$this->curso_id)->first();
+		$this->clas = $clas;
+		$lec = Leccion::where('clase_id', $clas->id)->orderBy('id','asc')->get();
+		$this->lec = $lec;
+	}
+		
+		// $this->aulaExiste='';
+		// $this->reg='';
+		// $this->acceder='';
+		// $this->ir='';
+		
+		//return back()->with('mensaje','Datos Registrados');
+    
+
+
+
+
+public $lecId;
+
+	public function show_lecc($id){
 		$this->aula = '';
 		$this->show_lecc = true; 
 		$this->show = $id;
 		$clas = Clase::where('curso_id',$this->curso_id)->first();
 		// $lecc = Leccion::where('leccion',$id)->get();
-		$lec = Leccion::where('id',$id)->first();
+		$lecId = Leccion::where('clase_id', $clas->id)->where('id',$id)->first();
 		//$lec = Leccion::where('leccion',$id)->get();
-		$this->lec = $lec;
-		$this->lecfiles = $lec->files;
+		$this->lecId = $lecId;
+
+		$files = FilesLeccion::where('leccion_id',$id)->get();
+		$this->lecfiles = $files;
 
 		// $files = FilesLeccion::where('leccion_id',$id)->get();
 		// $this->files = $lec->files;
 
 		// // $user = UserAulas::where('id',$id)->first();
-		$this->parm1 = $id;
-		$this->parm2 = $user;
-
 
 		//guarda registros en table, clase_leccions que ha visto el usuario reg en DB 'user_aulas'
 		// DB::table('usuario_leccions')->insert([

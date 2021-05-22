@@ -14,23 +14,27 @@
 			 <div class=" display-6" title="Responsabls" style="padding: 3%;">
 			    <a href="{{ route('resp-livew')}}"  class="img-tool-admin">
 					<img src="{{asset('images/resp.png')}}" >
-					Responsabl's
+					<span class="display-6 none">Responsabl's</span>
 				</a>	
 			 </div>		  
 			<!-- PARTICIPANTS -->	
 			<div class="" title="Participants" style="padding: 3%;">
 				<a href="{{ route('part-livew') }}"  class="img-tool-admin">
-					<img src="{{asset('images/participants.png')}}"  style="">
-					<span>Participante</span>
+					<!-- <img src="{{asset('images/participants.png')}}" > -->
+					<img src="{{ asset('images/participants.gif') }}" class="none" >
+					<span class="display-5 none">Participant's</span>
 				</a>
 			</div>	
 			<!-- USERS -->
 			<div class=" display-6" title="Usuarios" style="padding: 3%;"> 
 				<a href="{{ route('AdmUser') }}"  class="img-tool-admin">
-					<img src="{{asset('images/loguear.png')}}" class=""  style="">
-						Users
+					<img src="{{asset('images/loguear.png')}}" >
+						<span class="display-6 none">User's</span>
 				</a>                           	  
 			</div>
+				<img src="{{ asset('images/tool.gif') }}" class="none" >
+				
+		
 		</div>
 		<!--  class="img-tool-admin" -->
 
@@ -39,15 +43,15 @@
 			<div  class="" title="Cursos" style="padding: 2%;">
 				<a href="{{ route('cursos') }}"  class="img-tool-admin"> 
 				<img src="{{ asset('images/cursos-online.png') }}"> 
-				 <span class="display-5">Cursos(courses)</span>
+				 <span class="display-5 none">Cursos(courses)</span>
 				</a>
 			</div>
 
 			<!-- Virtual Class  -->
 			<div class="" title="entrar al Aula Virtual" style="padding: 2%;" >
-				<a href="{{ route('class')}}" class="img-tool-admin" title="cursos"> 
-					<img src="{{ asset('images/class-virtual.gif')}}" class=""  >
-					 <span>class-aulas Virtual</span>
+				<a href="{{ route('class')}}" class="img-tool-admin" title="Administrar class-aulas Virtual"> 
+					<img src="{{ asset('images/class-virtual.gif')}}"  >
+					 <span  class="display-5 none">class-aulas Virtual</span>
 				</a> 	
 			</div> 
 
@@ -57,14 +61,17 @@
 					<img src="{{ asset('images/list-inscrip.png')}}">
 				</a>
 			</div>
-		</div>
-	</div><br><br>
-	<!-- MENSAJES -->
-	<div   title="Mensajes" align="center">
+
+				<div   title="Mensajes" align="center">
 		<a href="{{ route('mensajs')}}" title="Adm. mensajes" class="img-tool-admin-msj"> 
 			<img src="{{ asset('images/mensajes.png')}}" >
 		</a> 
-	</div> 	  	
+	</div> 	
+		</div>
+	</div><br><br>
+
+	<!-- MENSAJES -->
+  	
 	
 </div>
 
