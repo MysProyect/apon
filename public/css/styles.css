@@ -161,7 +161,7 @@ footer{ width:100%;   height: auto;  position: absolute; bottom: 0; color: black
 .img-curs-menu img{ width: 30%; border-radius: 5%;}
 .img-curs-admin img{ width: 200%; height: 400%; border-radius: 10%;}
 .img-curs-edit img{ width: 30%; height: 50%; border-radius: 10%;}
-.img-curs-2{ width: 100%; border-radius: 10%;}
+.img-curs-2{ width: 60%; border-radius: 10%;}
 .img-curs-3{ width: 40%; border-radius: 10%;}
 .img-curs-aula{ width: 50%; height:30%; border-radius: 10%;}
 .img-curs-aula-2{width: 100%; height:50%; border-radius: 10%;}

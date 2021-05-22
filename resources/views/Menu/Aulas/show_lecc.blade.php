@@ -9,50 +9,60 @@
 	   <img src="{{ asset('images/icons/back.png') }}"  class="irAtras"></a> 
 	</div>
 
-
-
-
 	<div align="left" class="text-success display-6">
 		Leccion: {{$show}}	
 	</div>
-<br><br>
-		<div align="center" class="form-gruop">
+
 		<!-- 	<div  class="">
 				<label>array leccion y files  {{ $lecfiles }}</label>
 			</div> -->
 
+		<b class="display-7 text-primary">Multimedias (Imagenes/videos)</b>
+		<div class="container-2">
+		        @foreach($lecfiles as $fl)
+		        	<?php if(Str::endsWith($fl->file,['.png','.jpg','.jpeg','.gif','.bmp', '.gim','svg'])){ ?>
+		               <div class="item">
+		                 <img src="{{ Storage::url("$fl->file") }}" alt="Archivo no encontrado" class="img-tam">
+		                 <a href='/storage/{{$fl->file}}' class="display-8 text-center" ><br>
+		                 	<img src="{{asset('images/icons/show-2.png')}}" title="ver/descargar" width="20" height="20" height="40"></a>
+		                </div>
+		              <?php }?>
+		        @endforeach
+		</div>
+
+		<div class="container-2">
+			@foreach($lecfiles as $fl)
+				<?php if(Str::endsWith($fl->file,['.mp4','.MPEG-4', '.mwv', '.avi'])){	?>
+						<div align="center">
+							<video  id="video-curs-2" autoplay loop muted >
+								<source src="{{ Storage::url($fl->file)}}" type="video/mp4" class="cursor" style="cursor: move;  width: 5%;">
+							</video>
+						</div>	
+				<?php }?>
+			@endforeach
+		</div>
+
+	
+	<br>
 
 
-		@foreach($lecfiles as $lf)
-			<?php if(Str::endsWith($lf->file,['.png','.jpg','.jpeg'. '.bmp', '.gim'])){	?>
-				<label style="margin-right: 5%; float: center;">
-					<img src="{{ Storage::url("$lf->file") }}" alt="imagen no disponible" class="display-7 " style="cursor: pointer" title="{{$lf->name_file}}" width="200"/><br>
-					<a href='/storage/{{$lf->file}}' class="display-8 text-center" ><img src="{{asset('images/icons/show-2.png')}}" title="ver/descargar" width="20" height="10"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				</label>					
-			<?php }elseif(Str::endsWith($lf->file,['.mp4','.MPEG-4', '.mwv', '.avi'])){	?>
-				<br><div align="center">
-						<video  id="video-curs" controls loop>
-							<source src="{{ Storage::url($lf->file)}}" type="video/mp4">
-						</video>
-					</div>	
-			<?php }elseif(Str::endsWith($lf->file,'.pdf')){	?>				
-					<a target="_blank" href="{{ Storage::url($lf->file)}}">{{$lf->name_file}}
-						<img src="{{ asset('images/icons/PDF.png') }}" style="cursor: pointer; width: 10%;"/>
-					</a>&nbsp;&nbsp;
-			<?php }elseif(Str::endsWith($lf->file,['docx','.doc','.text',])){?>
-				<div>
-					<a target="_blank" href="{{ Storage::url($lf->file)}}">{{$lf->name_file}}
-						<img src="{{ asset('images/icons/DOC.png') }}" style="cursor: pointer; width: 10%;"/>
-					</a>
-				</div>	&nbsp;&nbsp;
-			<?php }elseif(Str::endsWith($lf->file,['.zip', '.tar'])){?>
-				<div >
-					<a target="_blank" href="{{ Storage::url($lf->file)}}">{{$lf->name_file}}
-						<img src="{{ asset('images/icons/zip.png') }}" style="cursor: pointer; width: 10%;"/>
-					</a>
-				</div>	&nbsp;&nbsp;
-			<?php }?>
-		@endforeach
+		@if($lec->urlExt)
+			  <iframe width="560" height="315" src="<?php echo $lec->urlExt ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+		@endif
+		<div class="container-2">
+				<img src="{{asset('images/icons/documnt.svg')}}" style="width: 10%; height: 2%;" title="document's">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<?php $i=0; ?>
+				@foreach($lecfiles as $fl)	
+					<?php $i= $i+1; ?>
+					<?php if(Str::endsWith($fl->file,['docx','.doc','.pdf', '.zip','.rar'])){?>
+						<div style="display: block;" align="center">
+								<a target="_blank" href="{{ Storage::url($fl->file)}}">{{$fl->name_file}}</a>
+						</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<?php }?>
+				@endforeach
+			</div>
+
+
 @if(!($lecfiles->count() && $lec))
 	<label class="text-center display-6 text-danger">Esta Leccion esta Vacia </label>
 @endif
@@ -66,3 +76,11 @@
 			@endif
 		</div>
 </div>
+
+
+
+
+
+
+
+

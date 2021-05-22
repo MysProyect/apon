@@ -196,7 +196,7 @@ public function verif($id){
 		}else{
 			$this->close();
 			$this->clear();
-			return back()->with('alert','No existe en nuestra base de datos');
+			return back()->with('alert','No existe en nuestra base de datos, puede 	que no se haya inscrito');
 			
 		}
 

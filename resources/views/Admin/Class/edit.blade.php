@@ -21,7 +21,7 @@
 		<b class="display-7 text-primary">Multimedias (Imagenes/videos)</b>
 		<div class="container-2">
 		        @foreach($files_lec as $fl)
-		        	<?php if(Str::endsWith($fl->file,['.png','.jpg','.jpeg','.gif'])){ ?>
+		        	<?php if(Str::endsWith($fl->file,['.png','.jpg','.jpeg','.gif','.bmp', '.gim','svg'])){ ?>
 		               <div class="item">
 		                 <img src="{{ Storage::url("$fl->file") }}" alt="Archivo no encontrado" class="img-tam">
 		                 <img src="{{asset('images/icons/trash.png')}}" width="25" height="30" wire:click="delet({{$fl->id}})" title="Eliminar" style="cursor: move;">
@@ -32,7 +32,7 @@
 
 		<div class="container-2">
 			@foreach($files_lec as $fl)
-				<?php if(Str::endsWith($fl->file,['.mp4','.MPEG-4'])){	?>
+				<?php if(Str::endsWith($fl->file,['.mp4','.MPEG-4', '.mwv', '.avi'])){	?>
 						<div align="center">
 							<video  id="video-curs-2" autoplay loop muted >
 								<source src="{{ Storage::url($fl->file)}}" type="video/mp4" class="cursor" style="cursor: move;  width: 5%;">

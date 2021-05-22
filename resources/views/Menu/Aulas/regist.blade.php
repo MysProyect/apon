@@ -9,7 +9,7 @@
  		<span class="display-8"><i>debe contener: entre 5-10 caractes Alfa-numericos</i></span>	
 	    <input type="text" wire:model="usuario" class="form-control" autofocus><br>	   
 	    @error('usuario')
-			<label class="alert-danger">Usuario Obligatorio</label>
+			<label class="alert-danger">Usuario invalido</label>
 		@enderror
 	</div>
 	<div class="form-group">
