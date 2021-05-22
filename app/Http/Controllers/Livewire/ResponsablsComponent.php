@@ -38,8 +38,7 @@ class ResponsablsComponent extends Component
 
 
     public function render()
-    {
-    	
+    {    	
 		 //$profiles=Profession:all();
     	$cursos= Curso::all();
 		return view('livewire.responsabls-component',compact('cursos'),[			
@@ -49,9 +48,9 @@ class ResponsablsComponent extends Component
 				->orWhere('last_name','like', '%'.$this->searchResp.'%');
 				})->orderBy('id','desc')->paginate(10) 
 		]);
-     }
+    }
     
-      public function show($id){
+    public function show($id){
 		$resp= Responsabl::find($id);
 		$this->resp_id	= $resp->id; 
 		$this->cedula = $resp->cedula;
@@ -63,8 +62,8 @@ class ResponsablsComponent extends Component
 		$this->show = true;
 	} 
 	 
-		public function create(){
-		
+	public function create(){
+		$this->clear();	
 		$user_id = Auth::user()->id;
 		$rol = Auth::user()->role;   
 			foreach ($rol as $r) { //recorro la fila pivot del user
@@ -74,8 +73,7 @@ class ResponsablsComponent extends Component
 				$this->view = 'create';	
 			}else{
 				$this->No_acceso = "No tiene permisos para agregar";
-			}
-							
+			}							
 	}
 
     public function verif(){    		  
@@ -89,7 +87,7 @@ class ResponsablsComponent extends Component
 			
 	}
      
-     public function store() {
+    public function store() {
 		$this->validate(['cedula' => 'required|numeric']);
 		 if ($this->email){
 			  $this->validate([ 'email' => 'email']);  			 

@@ -30,6 +30,19 @@ Route::post('/auth/AdmUser/detalle/{id}', 'Auth\RegisterController@statud')->nam
 
 
 
+Route::get('/img', function () {
+    return view('img');
+});
+
+
+
+
+
+
+
+
+
+
 Route::get('/', function () {
     return view('home');
 })->name('welcome');

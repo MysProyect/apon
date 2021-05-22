@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Leccion extends Model
 {
     protected $table = 'leccions';
-    protected $fillable = ['clase_id', 'leccion', 'texto', 'url', 'visibility', 'user_created', 'user_updated'];
+    protected $fillable = ['clase_id', 'leccion', 'texto', 'url','urlExt','visibility', 'user_created', 'user_updated'];
 
 
     // public function comments()

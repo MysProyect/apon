@@ -30,25 +30,28 @@
 			</a> 
 		</div>   
 	</div> -->
-  
-<div class="curso-home change text-center">     	
-    <a class="nav-link text-hover display-3" href="{{ route('cursos-menu') }}" class="">
-    <div class="text text-1">C</div>
+
+<div class=" change text-center" >     	
+	<a href="{{ route('cursos-menu') }}">
+    <!-- <a class="nav-link text-hover display-3" href="{{ route('cursos-menu') }}" class=""> -->
+<!--     <div class="text text-1">C</div>
     <div class="text text-2">U</div>
 	<div class="text text-3">R</div>
 	<div class="text text-4">S</div>
 	<div class="text text-2">0</div>
-	<div class="text text-3">S</div>
+	<div class="text text-3">S</div> -->
+	<img src="{{asset('images/cursos.gif')}}" title="Cursos" >
 	<!-- <img src="{{asset('images/cursos-online.png')}}" class="curs-home"> -->
 	</a>	
 </div> 
-<div align="right" class="flex">
+<div align="left" class="flex">
 	<img src="{{asset('images/AV.png')}}" class="">	
 		<a class="nav-link text-center" href="{{ route('aulas')}}" id="aula">
 			
 		Aula Virtual
 	</a>
 </div>
+
 
 @endsection
 

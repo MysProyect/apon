@@ -21,6 +21,7 @@ class CreateLeccionsTable extends Migration
             $table->unsignedBigInteger('leccion');
             $table->string('texto')->nullable();
             $table->string('url')->nullable();
+            $table->string('urlExt')->nullable();
             $table->integer('visibility')->default('1');
             $table->integer('user_created');
             $table->integer('user_updated')->nullable();

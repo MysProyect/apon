@@ -14,15 +14,15 @@
    <link rel="stylesheet" href="{{ asset('css/styles.css') }}"> 
    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> 
 
-   <link rel="icon" type="image/png" href="{{asset('images/AV.png')}}" />
+   <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}" />
       @livewireStyles 
 
 
  </head> 
+
+
 <body>
-
 <div id="header"> 
-
   <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-2">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class=" navbar-toggler-icon"></span>
@@ -60,7 +60,7 @@
     </form>
 
  </ul>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
 
 @livewire('comp-contactanos')
@@ -105,39 +105,54 @@
 
 
 
-      <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto">
              <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link display-6" href="{{ route('login') }}"><img src="{{asset('images/login.png')}}" width="80"  title="Entrar"></a>
                                 </li>
-                            @endif
-                            
+                            @endif                            
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link display-7" href="{{ route('register') }}">{{ __('Registrarte') }}</a>
                                 </li>
                             @endif
                         @else
-                          <div style="display: flex; width: 100%;">
+
+
                             <li class="nav-item dropdown">
-                              
                                 <a id="navbarDropdown" class="text-success dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    <?php echo  (strtoupper (Auth::user()->username) )?></a>
                                 </a>
-                            
-     
-
- 
-
+                                <label class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a href="{{ route('logout') }}" class="text-danger " onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Salir">Cerrar Seccion
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                  @csrf
+                                </form>
+                                </label>
+                            </li>
+                           
+                             <!--   <img src="{{asset('images/icons/acceso.png')}}" class="img-user-auth"> -->
+                              
+                              <li class="nav-item">
+                                    <a class="nav-link text-danger display-7" href="{{ route('Admin') }}">{{ __('Gestionar') }}</a>
+                                </li>
+                             </a>
+                          
+                      
+                        <!--   <div style="display: flex; width: 100%;">
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="text-success dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   <?php echo  (strtoupper (Auth::user()->username) )?></a>
+                                </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a href="{{ route('logout') }}" class="text-danger " onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Salir">Cerrar Seccion
-                </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                <a href="{{ route('logout') }}" class="text-danger " onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Salir">Cerrar Seccion
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                  @csrf
+                                </form>
                                 </div>
                             </li>
                             <div align="center">
@@ -145,8 +160,8 @@
                                <img src="{{asset('images/icons/acceso.png')}}" class="img-user-auth">
                               Gestionar
                              </a>
-                             </div>
-                          </div> 
+                            </div>
+                          </div>  -->
                         @endguest
 <!-- 
    @if (Auth::user())
@@ -159,20 +174,13 @@
     </div>
           
   @endif -->
-                    </ul>
-
-
-
-
-
-
-
-</nav>
+    </ul>
+  </nav>
 </div>
 
 
 
- <div  class=" {{ request()->routeIs('welcome') ? 'background' : ''}}" style="margin-right: 10%; margin-left: 15%; " >	 
+<div  class=" {{ request()->routeIs('welcome') ? 'background' : ''}}" style="margin-right: %; margin-left: 15%;" >	 
 <!-- <div style="margin: 2%;"> -->
 	
 		 @yield('content')
@@ -198,6 +206,7 @@
   
   </div>
   </div>
+
 </footer>
 </div>
     

@@ -1,0 +1,39 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# resources/views/layouts/AppAuth
+# resources/views/layouts/app2
+
+# resources/views/Menu/Cursos_Insc_comm/cursos2
+# resources/views/Menu/Cursos_Insc_comm/notas
+# resources/views/Menu/Cursos_Insc_comm/create
+/resources/views/Menu/Cursos_Insc_comm/inscribirse-lav
+# resources/views/insc
+# resources/views/layout
+
+# resources/views/layout
+# resources/views/asoc
+# resources/views/pdf-prof
+# resources/views/jsc
+# resources/views/attr-livewire
+
+# public/css/normalize.css
+
+# public/js/conf.js
+# public/js/SelcDinam.js
+# public/js/SelcDinamiAG.js
+
+
+# app/Http/Controllers/Livewire/App/Menu
+
+

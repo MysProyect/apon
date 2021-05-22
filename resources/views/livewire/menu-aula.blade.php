@@ -20,8 +20,11 @@
 	      <label class="text-danger" ><i>Para continuar... esta seccion previamente debe estar inscripto en un de nuestros
 	      	 <a class="nav-link text-hover" href="{{ route('cursos-menu') }}" class="nav-link">cursos disponibles...</a></i>
 	      </label> 
-	    </div>			
+	    </div>	
+
+	    	
 		<div align="center" style=" margin-top: 2%;">
+				<img src="{{asset('images/pasar.gif')}}" class="cursor">
 				<img src="{{asset('images/continue.png')}}" width="200"  wire:click="continue" class="cursor">
 		</div>
 	</div>

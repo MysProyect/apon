@@ -46,7 +46,7 @@
 			<!-- Virtual Class  -->
 			<div class="" title="entrar al Aula Virtual" style="padding: 2%;" >
 				<a href="{{ route('class')}}" class="img-tool-admin" title="cursos"> 
-					<img src="{{ asset('images/class-virtual.png')}}" class=""  >
+					<img src="{{ asset('images/class-virtual.gif')}}" class=""  >
 					 <span>class-aulas Virtual</span>
 				</a> 	
 			</div> 
