@@ -168,7 +168,7 @@ class MenuCursosInscComments extends Component
 			$insc = Incription::create([ 
 				'part_id' => $Buscpart->id,		
 				'curso_id' => $this->curso_id,
-				'conf' => 1, //1 para pruebas
+				'conf' => 0, //1 para pruebas
 			 ]);
 			if(Auth::user()){
 				$insc->user_created = Auth::user()->id;

@@ -22,21 +22,22 @@
        @foreach($Insc as $in) 
        <div  class="form-group" style="border-bottom-color: red 1px;">
             @if($in->conf == 1)
-                  <label class="text-success" style="width:  80%">
+                  <div class="text-success" style="width:  80%">
                     <img src="{{asset('images/icons/checked.png')}}" width="30">  
                     {{$in->part['name']}} {{$in->part['last_name']}} 
 
-                  </label>   
-                                                        
+                                           
                         <!--   <input type="checkbox" name="conf[]" wire:model="insc_id" 
                           wire:click="saveconf({{ $in->id }})" id="conf" value="{{$in->id}}" > -->            
-                         <input type="button" value="x" wire:click="destroy({{ $in->id }})" class="btn btn-danger" style=" float: right;"> </label>  
+                       <!--   <input type="button" value="x" wire:click="destroy({{ $in->id }})" class="btn btn-danger" style=" float: right;">  -->
+                  </div>  
              
               @else                 
-                   <label class="text-danger"> 
+                   <div class="" style="width:90%;"> 
 
                     <input type="checkbox"  name="conf[]" wire:model="insc_id" wire:click="saveconf({{ $in->id }})" id="conf" value="{{$in->id}}" onclick="conf()" title="validar">
-                    {{$in->part['name']}} {{$in->part['last_name']}}  </label> 
+                    {{$in->part['name']}} {{$in->part['last_name']}} 
+                     <input type="button" value="x" wire:click="destroy({{ $in->id }})" class="btn btn-danger" style=" float: right;">  </div> 
                   <!--   <input type="button" value="x" wire:click="destroy({{ $in->id }})" class="btn btn-warning" style=" float: right;"> -->
                  
               

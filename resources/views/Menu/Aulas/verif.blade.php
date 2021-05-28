@@ -1,3 +1,8 @@
+   <div align="right">
+         <button type="button" class="close" wire:click="close"  data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true close-btn"><img src="{{asset('images/icons/close.png')}}" width="50" ></span>
+          </button>
+      </div>
  <div class="form-group"  style="margin-top: 3%; ">
  <img src="{{asset('images/icons/busc.gif')}}" /> 
  		<!-- <input type="text" wire:model="curso_id" value="{{$curso_id}}" class="d-lg-none"> -->
@@ -24,14 +29,5 @@
 
 
 
-
-
-@if ($Preg_regist)
-		<label class="form-gruop text-center display-7" style="width: 62%; margin-top: 2%;" wire:click="decid" >
-			<i>Quiere registrarse ahora?</i><br>
-			<input type="radio" wire:model="decid" value="1" class="btn btn-success" >Si</input>
-			<input type="radio" wire:model="decid" value="" class="btn btn-warning">No</button>
-		</label>
-@endif 
 </div>
 

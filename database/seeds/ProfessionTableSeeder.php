@@ -36,7 +36,7 @@ class ProfessionTableSeeder extends Seeder
        	DB::table('professions')->insert(
        		['name' => 'Contador Publico', 'abrev' => 'C.P.'],
        	);   
-   		DB::table('professions')->insert(
+   		 DB::table('professions')->insert(
        		['name' => 'Otra', 'abrev' => ''],
        	);
     }

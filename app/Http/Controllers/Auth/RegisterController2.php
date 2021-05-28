@@ -108,7 +108,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:3', 'confirmed'],
         ]);
 
-            $NewUser = App\User::create([
+       $NewUser = App\User::create([
             'name' => $request['name'],
             'last_name' => $request['last_name'],
             'username' => $request['username'],
@@ -117,34 +117,13 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
             'statud' => 1,
            ]);
-
-       // $NewUser = App\User::create([
-       //      'username' => 'maria77',
-       //      'email_verified_at' => now(), // para pruebas
-       //      'email' => 'maria4@ddd',
-       //      'password' => Hash::make(123123),
-       //      'statud' => 1,
-       //     ]);
     
-       //  $rol_user =   DB::table("role_user")
-       //      ->insert([
-       //         "user_id" => $NewUser->id,
-       //         "role_id" => $request['role'],
-       //         "nivel" => $request['nivel'],
-       //     ]);
-        
-        DB::table('question_users')->insert([
-             'question_id' =>  $request['question1'],
-             'answer' => $request['answer1'],
-           'user_id' => $NewUser->id, 
-        ]);
-        DB::table('question_users')->insert([
-             'question_id' =>  $request['question2'],
-             'answer' => $request['answer2'],
-           'user_id' => $NewUser->id, 
-        ]);
-
-
+        $rol_user =   DB::table("role_user")
+            ->insert([
+               "user_id" => $NewUser->id,
+               "role_id" => $request['role'],
+               "nivel" => $request['nivel'],
+           ]);
       if(Auth::user()){
             $NewUser->id_user_created = Auth::user()->id;
             $NewUser->save();

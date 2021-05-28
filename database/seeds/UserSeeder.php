@@ -30,6 +30,30 @@ class UserSeeder extends Seeder
             // 'remember_token' => Str::random(10),	
 		]);
 
+        DB::table('role_user')->truncate(); 
+        DB::table('role_user')->insert([
+                'user_id' => 1, 
+                'role_id' => 1,
+                'nivel' => 1                                
+        ]);
+        DB::table('question_users')->truncate(); 
+        DB::table('question_users')->insert([
+            'answer' => 'krisni',
+            'question_id' => 5,
+            'user_id' => 1, 
+        ]);
+        DB::table('question_users')->insert([
+            'answer' => 'verde',
+            'question_id' => 6,
+            'user_id' => 1, 
+        ]);
+        DB::table('question_users')->insert([
+            'answer' => 'arepa',
+            'question_id' => 8,
+            'user_id' => 1, 
+        ]);
+
+
              //ASOCIAR SEDER A DOS TABLAS
         // DB::table('role_user')->truncate(); 
         //     DB::table('role_user')->insert([

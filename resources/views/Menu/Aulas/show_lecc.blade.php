@@ -23,7 +23,9 @@
 		        	<?php if(Str::endsWith($fl->file,['.png','.jpg','.jpeg','.gif','.bmp', '.gim','svg'])){ ?>
 		               <div class="item">
 		                 <img src="{{ Storage::url("$fl->file") }}" alt="Archivo no encontrado" class="img-lec">
-		                 <a href='/storage/{{$fl->file}}' class="display-8 text-center" ><br>
+		                
+
+		                <a  target="_blank"  href='/storage/{{$fl->file}}' class="display-8 text-center" ><br>
 		                 	<img src="{{asset('images/icons/show-2.png')}}" title="ver/descargar" width="50" ></a>
 		                </div>
 		              <?php }?>

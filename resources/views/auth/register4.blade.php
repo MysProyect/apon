@@ -29,7 +29,6 @@
 
 
     <div class="card" >
-              <div class="title display-7 text-center text-danger"> Privilegios</div>
           <div class="card-body">
                 <div  class="flex" style="width: 100%;" align="center">
                     <div  class="">
@@ -44,33 +43,20 @@
                         @endif                                 
                       </div>&nbsp;&nbsp;&nbsp;&nbsp;
                       <div id="nivels">
-                        <div id="nivel1">
-                          <input type="radio" name="nivel" value="1" style="display: none;">Privilegios de administrador
-                           <small class="display-8" style="display: none;" id="r1">Agregar, Actualizar, Eliminar & Ver</small>
-                        </div>
-                        <div id="nivel2">
-                          <input type="radio" name="nivel" value="2" style="display: none;">
-                          <small class="display-8" style="display: none;" id="r2"> Agregar, actualizar & ver</small>
-                        </div>
-                        <div id="nivel3">
-                          <input type="radio" name="nivel" value="3" style="display: none;"><small class="display-8" style="display: none;" id="r1"> Actualizar & ver </small>
-                        </div>
-                       
-
-                        <div id="nivel4">
-                          <input type="radio" name="nivel" value="4" style="display: none;">
-                          <small class="display-8" style="display: none;" id="r1">Solo puede ver</small>
-                        </div>
+                        <div id="nivel1"><input type="radio" name="nivel" value="1"> Grud(all)</div>
+                        <div id="nivel2"><input type="radio" name="nivel" value="2" > Agregar, actualizar & ver</div>
+                        <div id="nivel3"><input type="radio" name="nivel" value="3"> Actualizar & ver </div>
+                        <div id="nivel4"><input type="radio" name="nivel" value="4"> Ver</div>
                         @if ($errors->has('nivel'))
                           <div class="display-8">indique nivel</div>                             
                         @endif                     
                       </div>
 
-<!-- 
-                    <div class="img-rol-user" style="margin-left: 2%;">
-                        <img src="{{asset('images/roles_niveles.png')}}" width="80" height="100"> 
+
+                    <div class="img-rol-user" style="margin-left: 10%;">
+                        <img src="{{asset('images/roles_niveles.png')}}"> 
                       </div> 
-                    </div> -->
+                    </div>
                
 
 

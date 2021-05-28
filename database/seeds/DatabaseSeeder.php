@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
            
-
+        //$this->call(UserSeeder::class); una x una
     $this->call([ //todas en un array
         ProfessionTableSeeder::class,
         RolesTableSeeder::class,
@@ -23,18 +23,14 @@ class DatabaseSeeder extends Seeder
         UserSeeder::class,
         ParticipantsSeeder::class,
         CursoSeeder::class,
+        QuestionSeeder::class,
     ]); 
-    //$this->call(UserSeeder::class); una x una
+    
 
    //$this->call(ResponsablsSeeder::class); 
     
 
-    DB::table('role_user')->truncate(); 
-        DB::table('role_user')->insert([
-                'user_id' => 1, 
-                'role_id' => 1,
-                'nivel' => 1                                
-        ]);
+
 
     DB::table('incriptions')->truncate(); 
         DB::table('incriptions')->insert([

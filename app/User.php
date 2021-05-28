@@ -12,14 +12,13 @@ use App\Role;
 class User extends Authenticatable implements MustVerifyEmail 
 {
     use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name','last_name','username', 'email', 'password', 'profession_id', 'profile_id', 'email_verified_at','id_user_created','id_user_updated', 'statud'
+        'name','last_name','username', 'email', 'password', 'profession_id', 'profile_id', 'email_verified_at','id_user_created','id_user_updated', 'statud',
     ];
 
     /**
@@ -79,6 +78,11 @@ class User extends Authenticatable implements MustVerifyEmail
         ->withPivot('role_id','nivel');
     }
 
+
+    public function questions(){ //para saber el nivel
+        return $this->belongsToMany(Question::class,'question_users')
+        ->withPivot('answer');
+    }
 
 
 

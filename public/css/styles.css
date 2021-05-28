@@ -22,6 +22,9 @@ footer{ width:100%;   height: auto;  position: absolute; bottom: 0; color: black
     color: #36A0FF; }
 
 
+.question{}
+.answer input{font-weight: bold;}
+
 
 /*Edit aula - aulas*/
 .container-2 {  

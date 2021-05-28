@@ -19,9 +19,11 @@ Auth::routes(['verify' => true]);
 
 Route::get('/auth/registrarse', function(){
  	$roles = App\Role::all();
+ 	$quests = App\Question::all();
  	$profs = App\Profession::all();
- 	return view('auth.register',compact('roles','profs'));
+ 	return view('auth.register',compact('roles','quests','profs'));
 })->name('register');
+
 Route::post('/Registrar', 'Auth\RegisterController@create')->name('saveregist');
 Route::get('/auth/AdmUsers/tool', 'Auth\RegisterController@index')->name('AdmUser')->middleware('verified');
 Route::get('/auth/AdmUser/detalle/{id}', 'Auth\RegisterController@ver')->name('ver')->middleware('verified');

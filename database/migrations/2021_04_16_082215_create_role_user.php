@@ -20,7 +20,7 @@ class CreateRoleUser extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();
             $table->integer('nivel')->nullable();
-            //$table->timestamps();
+            $table->timestamps();
 
              
             $table->foreign('user_id')->references('id')->on('users'); 

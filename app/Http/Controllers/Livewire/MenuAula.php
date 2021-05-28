@@ -25,7 +25,7 @@ class MenuAula extends Component
 	public $auth, $failAuth; //auhtenticacion
 	public $clas, $lec, $cont;
 	public $lecc, $clases_leccions; //view aula bienvenido
-	public $resetAula,  $aulaUser, $Preg_regist;
+	public $resetAula,  $aulaUser;
 	
 	public $lecfiles;
 	
@@ -76,8 +76,7 @@ class MenuAula extends Component
 
 
 
-	public function olvido(){
-		
+	public function olvido(){		
 		$this->continue = '';
 		$this->logeat = '';
 		$this->verif =  true;
@@ -106,17 +105,16 @@ class MenuAula extends Component
 
 
 
-	public function decid(){
-		$curso = Curso::find($this->curso_id);
-		$this->curso_id = $this->curso_id;
-		if ($this->decid){
-			$this->regist = true; //pregunta si esta loguado  o no
-		}else{
-			$this->part =  '';
-			$this->Preg_regist = '';
-			$this->decid = '';
-			$this->close();		}
-	}
+	// public function decid(){
+	// 	$curso = Curso::find($this->curso_id);
+	// 	$this->curso_id = $this->curso_id;
+	// 	if ($this->decid){
+	// 		$this->regist = true; //pregunta si esta loguado  o no
+	// 	}else{
+	// 		$this->part =  '';
+	// 		$this->decid = '';
+	// 		$this->close();		}
+	// }
 
 
 
@@ -158,6 +156,7 @@ public function verif($id){
 		$this->validate(['cedula' => 'required']); 
 		$part = Participant::where('cedula',$this->cedula)->first();
 		$this->part = $part;
+		$this->regist = true;
 		if ($part){
 			$insc = Incription::where('part_id',$part->id)->where('curso_id',$this->curso_id)->where('conf', 1)->first();
 			//$this->insc = $insc;
@@ -169,26 +168,26 @@ public function verif($id){
 			  		$UserAula = UserAulas::where('part_id',$part->id)->where('clase_id',$clas->id)->first();
 			  	
 				  	if($UserAula){
-				  		$this->continue = '';		  		
-				  	 	$this->Preg_regist = '';
+				  		$this->continue = '';	
 						$this->UserAula = true;  
 
 				  	}else{ // llama a view registrarse
 				  	 	$this->continue = '';
 				  	 	$this->cedula = '';
-				  	 	$this->Preg_regist = true;
 				  	}			  		
 				}else{
 					$this->view();
 					$this->continue = true;
+      
         			return back()->with('alert','Este curso no ha dado inicio!, consulte con el administrador');	
 				} 	
 			}else{
-				$this->close();
+				$this->clear();
 
-				$this->continue = true;
+				$this->continue = '';
 
-			  	return back()->with('alert', 'disculpe no esta inscrito en el curso, o debe esperar sea  "validada" su inscripcion');
+			  	//return back()->with('alert', 'disculpe no esta inscrito en el curso, o debe esperar sea  confirnada su inscripcion!!');
+			  	request () -> session () -> flash ('alert','disculpe no esta inscrito en el curso, o debe esperar sea  confirnada su inscripcion!!');	
 			}
 		// }else{
 		// 	$this->regist = '';
@@ -407,6 +406,7 @@ public function verif($id){
 
 
 	public function aula($id){
+		$this->lecId = '';
 		$this->aula = true; //ACCEDIENDO atraves del registro
 		$clas = Clase::where('curso_id',$this->curso_id)->first();
 		$curso = Curso::where('id',$this->curso_id)->first();

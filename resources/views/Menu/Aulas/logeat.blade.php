@@ -2,14 +2,14 @@
  <div class="wrapper fadeInDown">
 
   <div id="formContent">
-       <div align="right">
-       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true close-btn"><img src="{{asset('images/icons/close.png')}}" width="40" wire:click="close"></span>
+      
+    <div class="fadeIn first">
+        <button type="button" class="close" wire:click="close"  data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true close-btn"><img src="{{asset('images/icons/close.png')}}" width="50" ></span>
           </button>
-     </div>
-    <div class="fadeIn first img-av">
-     
-  		<h3 class="text-center display-5">Entrar al Aula Virtual</h3>
+        <span class="text-center display-5">Entrar al Aula Virtual</span>
+
+  	
   		<p class="display-6 text-primary ">{{$curso->title}}</p>
         <img src="{{asset('images/icons/acceso.png')}}"  >
     </div>

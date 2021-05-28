@@ -49,7 +49,8 @@
 <div align="right">
 
 		<a class="nav-link text-center" href="{{ route('aulas')}}" id="aula" title="Tu Aula Virtual - Entrar">
-				<img src="{{asset('images/GIF/clases-online.gif')}}" >		
+			<!-- 	<img src="{{asset('images/GIF/clases-online.gif')}}" >	 -->	
+				<img src="{{asset('images/GIF/aula.gif')}}" >	
 		
 	</a>
 
