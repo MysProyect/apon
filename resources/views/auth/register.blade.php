@@ -28,10 +28,31 @@
 
 
 
+
+
+<!-- 
+los privilegios esta definidos de la siguiente forma:
+Usuario administador: opciones de drop, add, edit, show 
+Usuario con privilegios: opciones de add, edit y show
+Usuario colaborador: aolo edit y show
+Usuario con recursos: solo puede ver
+
+El  privilerio a determinada accion (nivel) va ir de acuerdo a la funcion y rol dentro de la empresa/organizacion sin violar la integridad de la empresa u informacion y/o operaciones de la aplicacion web-->
+
+
+
+
+
+
+
+
+
+
+<!-- ROLES -->
     <div class="card" >
               <div class="title display-7 text-center text-danger"> Privilegios</div>
           <div class="card-body">
-                <div  class="flex" style="width: 100%;" align="center">
+                <div  class="flex">
                     <div  class="">
                       <select name="role" id="role" class="form-control" value="{{ old('role') }}"  onclick="userRole()" required>
                          <option value="">Indique rol</option>
@@ -42,37 +63,50 @@
                         @if ($errors->has('role'))
                           <div class="display-8"> indique role</div>
                         @endif                                 
-                      </div>&nbsp;&nbsp;&nbsp;&nbsp;
-                      <div id="nivels">
-                        <div id="nivel1">
-                          <input type="radio" name="nivel" value="1" style="display: none;">Privilegios de administrador
-                           <small class="display-8" style="display: none;" id="r1">Agregar, Actualizar, Eliminar & Ver</small>
-                        </div>
-                        <div id="nivel2">
-                          <input type="radio" name="nivel" value="2" style="display: none;">
-                          <small class="display-8" style="display: none;" id="r2"> Agregar, actualizar & ver</small>
-                        </div>
-                        <div id="nivel3">
-                          <input type="radio" name="nivel" value="3" style="display: none;"><small class="display-8" style="display: none;" id="r1"> Actualizar & ver </small>
-                        </div>
-                       
+                   </div>&nbsp;&nbsp;&nbsp;&nbsp;
 
-                        <div id="nivel4">
-                          <input type="radio" name="nivel" value="4" style="display: none;">
-                          <small class="display-8" style="display: none;" id="r1">Solo puede ver</small>
-                        </div>
-                        @if ($errors->has('nivel'))
-                          <div class="display-8">indique nivel</div>                             
-                        @endif                     
-                      </div>
 
-<!-- 
-                    <div class="img-rol-user" style="margin-left: 2%;">
-                        <img src="{{asset('images/roles_niveles.png')}}" width="80" height="100"> 
+                  <div>
+                        <li style="list-style:none">
+                          <input type="radio" name="nivel" value="1" style="display: none;" id="nivel1">
+                          <small id="rol1" style="display: none" class="display-7 text-danger">
+                          <img src="{{asset('images/icons/delet.png')}}"><br>Agregar, Actualizar, Eliminar, Ver</small>
+                        </li>
+                        <li style="list-style:none">
+                           <input type="radio" name="nivel" value="2" style="display: none;" id="nivel2">
+                          <small id="rol2" style="display: none" class="display-7 text-primary"><img src="{{asset('images/icons/rol2.png')}}" width="50"><br>Agregar, Actualizar, Ver</small>
+                        </li>
+                        <li style="list-style:none">
+                           <input type="radio" name="nivel" value="3" style="display: none;" id="nivel3">
+                            <small id="rol3" style="display: none" class="display-7 text-success">
+                            <img src="{{asset('images/icons/editar.png')}}"><br>Actualizar, Ver</small>
+                        </li>
+                        <li style="list-style:none">
+                          <input type="radio" name="nivel" value="4" style="display: none;" id="nivel4">
+                          <small id="rol4" class="display-6 text-warning" style="display: none">Solo
+                          <img src="{{asset('images/icons/show.png')}}"><br>
+                          </small>
+                        </li>
+                  </div>
+
+                                  
+                  <div class="img-rol-user" style="margin-left: 2%;">
+                        <img src="{{asset('images/roles.png')}}" width="80" height="100"> 
                       </div> 
-                    </div> -->
-               
-
+                  
+                  <div style="width: 35%;margin-left: 10%" align="center">
+                     <label>
+                          <b>¿como defino un privilegio?</b><br>
+                          * Usuario administador: tiene opciones de: agregar, actualizar, eliminar y ver<br>
+                          <b>* Usuario con privilegios:</b> tiene opciones de agregar, actualizar y ademas ver <br>
+                          * Usuario colaborador:  actualizar y ver <br>
+                          <b>* Usuario con recursos:</b> solo puede ver<br>
+                     </label>                    
+                  </div>
+                </div>
+                <div class=" text-success text-center font-weight-bold font-italic">
+                   <b>El  privilerio determinada la accion e ira de acuerdo a la funcion y rol dentro de la empresa/organizacion sin violar la integridad de la misma u informacion y/o operaciones de la aplicacion web</b>
+                </div>
 
 
 
@@ -83,10 +117,42 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <!-- EMAIL -->
-                  <div>       
-                    <strong>E-Mail</strong>
-                    <input id="email" type="email"  class="form-control"  name="email"  placeholder="direccion@example.com"  required autocomplete="email">
+                  <div>     
+                    <input id="email" type="email"  class="form-control"  name="email"  placeholder="email@example.com"  required autocomplete="email" style="padding: 0.5%; font-size: 1.5rem;">
                     @if ($errors->has('email'))
                       <div class="display-7 text-danger">verif email</di>                 
                     @endif 
@@ -97,10 +163,10 @@
 
 
 
+   <br>  
 
-
-                  <!-- PREGUNTAS DE SEGURIDAD 3 por usuario registrado-->
-<br>         
+<!-- PREGUNTAS DE SEGURIDAD 3 por usuario registrado-->
+          
       <div class="card">
         <div class="title display-7 text-center text-danger"> Preguntas de segutidad</div>
           <div class="card-body">
@@ -138,7 +204,7 @@
   <div class="card">
           <div class="card-body">
                     <strong>Password</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="text-muted display-8">debe contener: entre 5-10 caractes Alfa-numericos, ¡debe ser unico en la BD!</span>
+                    <span class="text-muted display-8">caractes Alfa-numericos</span>
                     <input id="password" type="password" class="form-control @error('password') errores @enderror" name="password" placeholder="Password" required>
                       <input id="password-confirm" type="password" name="password_confirmation"  placeholder="Confirmatión" class="form-control" required>
                 

@@ -47,11 +47,6 @@ class UserSeeder extends Seeder
             'question_id' => 6,
             'user_id' => 1, 
         ]);
-        DB::table('question_users')->insert([
-            'answer' => 'arepa',
-            'question_id' => 8,
-            'user_id' => 1, 
-        ]);
 
 
              //ASOCIAR SEDER A DOS TABLAS

@@ -103,7 +103,7 @@ class RegisterController extends Controller
         $validated = $request->validate([
           'username' => ['required', 'min:5', 'max:10', 'unique:users'],
             'role' => 'required',
-            'nivel' => 'required',
+            //'nivel' => 'required',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:3', 'confirmed'],
         ]);
@@ -126,12 +126,12 @@ class RegisterController extends Controller
        //      'statud' => 1,
        //     ]);
     
-       //  $rol_user =   DB::table("role_user")
-       //      ->insert([
-       //         "user_id" => $NewUser->id,
-       //         "role_id" => $request['role'],
-       //         "nivel" => $request['nivel'],
-       //     ]);
+        $rol_user =   DB::table("role_user")
+            ->insert([
+               "user_id" => $NewUser->id,
+               "role_id" => $request['role'],
+               "nivel" => $request['nivel'],
+           ]);
         
         DB::table('question_users')->insert([
              'question_id' =>  $request['question1'],
