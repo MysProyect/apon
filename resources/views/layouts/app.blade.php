@@ -190,11 +190,11 @@
 	
 		
    
-<div style="margin-top: 10%;" align="center">
+<div style="margin-top: 10%; " align="center">
 <footer>
   <div  class="flex">
     <div style="margin-left: 10%;">
-    <label class="text-muted none" style="">
+    <label class="text-muted none display-6" style="">
         @ (2020) todos los derechos reservados -- <i>developmentsoft2020@gmail.com</i>
     </label>
   </div>

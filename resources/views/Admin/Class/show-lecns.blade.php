@@ -5,7 +5,6 @@
 </div><br>
 
 @foreach($lecns as $N)
-
 	@if ($N->visibility == 1)
 		<li wire:click="show({{$N->id}})" class="text-primary display-7 cursor" title="detail...">Leccion {{$N->leccion}}</li>
 	@else
