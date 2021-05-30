@@ -58,7 +58,7 @@ class Curso extends Model
 
     public function leccions()
     {
-        return $this->hasManyThrough(Leccion::class, Clase::class);
+        return $this->hasMany(Leccion::class);
     }
 
 

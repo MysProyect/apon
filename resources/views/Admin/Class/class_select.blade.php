@@ -26,12 +26,22 @@
 									   	<small class="alert alert-danger">indique leccion</small> 
 									@enderror	
 								@endif		
+							</div>
+							<div>
+							@if($create)
+								<img src="{{asset('images/GIF/create.gif')}}">
+							@elseif($edit)
+								<img src="{{asset('images/GIF/update.gif')}}">
+							@else								
+								<img src="{{asset('images/admin-class.gif')}}" class="cursor">		
+							@endif
 							</div>	&nbsp;&nbsp;&nbsp; 
 							<div>
 								@if($mensaj)		
 									@include('Admin.Class.verif')
 								@endif			
 							</div>
+
 						</div>	
 					</div>
 				</div>
@@ -48,7 +58,7 @@
 				</div>
 			</div>
 
-{{$busc}}
+							
 
 
 		

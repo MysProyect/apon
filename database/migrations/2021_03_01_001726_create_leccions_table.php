@@ -17,6 +17,7 @@ class CreateLeccionsTable extends Migration
         Schema::create('leccions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('curso_id')->nullable();
             $table->unsignedBigInteger('clase_id')->nullable();
             $table->unsignedBigInteger('leccion');
             $table->text('texto')->nullable();
@@ -27,7 +28,7 @@ class CreateLeccionsTable extends Migration
             $table->integer('user_updated')->nullable();
             $table->timestamps();
 
-            
+            $table->foreign('curso_id')->references('id')->on('cursos'); 
             $table->foreign('clase_id')->references('id')->on('clases');
         });
     }

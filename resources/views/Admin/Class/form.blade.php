@@ -23,13 +23,15 @@
 									@endif
 
 							@endfor
-						@error('files')
+
+				<!-- 		@error('files')
 							<label class="alert-danger">¡archivo no valido!</label>
-						@enderror
+						@enderror -->
 						</div>
 						<div class="form-group">
 							<a href="#" class="btn btn-primary" wire:click.prevent="AddField"><b>Add +</b></a>
 						</div>
+						<label class="alert-danger">{{$errorfield}}</label>
 					</div>
 				</div>
 
@@ -66,7 +68,6 @@
 				<div>
 		    		<button type="submit" class="btn btn-primary btn-block">Subir y Guardar información</button>
 		    		 <img src="{{asset('images/icons/clear.png')}}" wire:click="clear"  class="img-clear" style="cursor: pointer;"  title="borrar">
-		    		 <img src="{{asset('images/icons/close.png')}}" wire:click="default"   class="img-close-2 close" style="cursor: pointer;"  title="cerrar">
+		    		
 		    	</div>
 	    </form>
-

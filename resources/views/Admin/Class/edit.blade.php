@@ -1,5 +1,3 @@
-
-
 <div class="container">
 
 		<div class="text-center display-4 text-success">Actualizar
@@ -9,7 +7,7 @@
 
 	<div class="form-group form-2">
 			<label class="text-right display-5 text-warning"><b>Leccion Nª <b>{{$leccion}}</label>&nbsp;&nbsp;&nbsp;
-				<img src="{{asset('images/icons/update.gif')}}">
+				
 		
 		    	<img src="{{asset('images/icons/close.png')}}" wire:click="salir"  class="img-close-2 close" align="right" style="cursor: pointer;"  title="cerrar">
 			

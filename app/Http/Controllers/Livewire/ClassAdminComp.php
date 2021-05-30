@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Http\Request;
-use App\Clase;
+//use App\Clase;
 use App\Curso;
 use App\Leccion;
 use App\FilesLeccion;
@@ -15,17 +15,21 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 use Illuminate\Support\Atr;
 use App\Http\Controllers\Livewire\Storage;
-//use App\Http\Controllers\Livewire\store;
+
+//se fuciono lecciones directamente telacionado con los cursos, tabla clases esta de mas, la valiable $class y $clases, se utilizaron para mostras relacion de curso con leccion
+
 
 class ClassAdminComp extends Component
 {
 	use WithFileUploads;
 
-	public $class_select = true, $img, $edit, $create, $cursos, $curso, $curso_id, $title, $leccion, $urlExt;
-	public $files=[], $url, $texto, $files_lec;
-	public $fields, $lec, $NroCS, $lecN;
-	public $mensaj, $list, $exist, $image, $busc, $upload, $delet, $visibility;
-	public $class, $clases, $name, $file, $lecs, $clasSec, $show_lecns, $show, $lecns, $clase_name, $atras;
+	public $class_select = true, $img, $edit='', $create='', $cursos, $curso, $curso_id, $title, $leccion, $urlExt;
+	public $lecN;
+	public $mensaj, $visibility;
+	public $clases, $list, $lecns, $show_lecns, $show;
+
+	public $class;
+	//public  $lecs, $atras, $NroCS, $lec, $image, $upload, $delet, $file, $name, $clase_name ;
 
     public function render()
     {
@@ -40,8 +44,11 @@ class ClassAdminComp extends Component
 
 
 public function AddField(){
-	$this->fields = $this->fields + 1;
-//	$this->validate([  'files'=>  'string'  ]);
+	if(empty($this->fields)){
+		$this->errorfield = 'error actualice la pagina';
+	}else{
+		$this->fields = $this->fields + 1;		
+	}
 }
 
 	public function change_curso(){
@@ -60,25 +67,20 @@ public function AddField(){
 
 	public function verif(){
 		//$this->validate([ 'curso_id' => 'required', 'leccion' => 'required' ]);
-		$class = Clase::where('curso_id','=',$this->curso_id)->first();
+		$class  = Leccion::where('curso_id',$this->curso_id)->where('leccion',$this->leccion)->first();
 		if($class){
-			$busc = Leccion::where('clase_id',$class->id)->where('leccion',$this->leccion)->first();
-			if($busc){
 				$this->create = '';
 			 	$this->edit = '';
 			 	$this->mensaj = true;
-			}else{
+		}else{
 				$curso = Curso::find($this->curso_id);
 			 	$this->title = $curso->title;
 			 	$this->leccion = $this->leccion;
 			 	$this->mensaj = '';
+			 	$this->edit = '';
 				$this->create = true;
-			}
-
-		}else{
-			$this->mensaj = '';
-			$this->create = true;
-		}	
+		}
+	
 	}
 
 
@@ -89,8 +91,7 @@ public function AddField(){
 		$this->mensaj = '';	
 		$curso = Curso::find($this->curso_id);
 		$this->curso = $curso;
-		$class = Clase::where('curso_id','=',$this->curso_id)->first();
-		$lec = Leccion::where('clase_id','=',$class->id)->where('leccion','=',$this->leccion)->first();
+		$lec = Leccion::where('curso_id','=',$this->curso_id)->where('leccion','=',$this->leccion)->first();
 		$this->lec = $lec;
 		$files_lec = FilesLeccion::where('leccion_id','=',$lec->id)->get();
 		$this->files_lec = $files_lec;	
@@ -125,35 +126,29 @@ public function AddField(){
 
 
 	public function list(){
-	
-
-		$clases = Clase::withCount(['curso','leccions'])->get();
-		//$clases = Clase::all();
-    	$this->clases = $clases;
-    	$clasSec = Leccion::all();
-    	$this->clasSec = $clasSec;
+		$clases = Curso::withCount(['leccions'])->get();
+		$this->clases = $clases;
+		$this->default();
     	$this->list = true;
-    
-    	//$this->class_select = '';
-		$this->edit = '';
-		$this->create = '';
 	}
+
+
 
 
 
 	public function show_lec($id){
 		$this->show_lecns = true;
-		$clases = Clase::withCount(['curso','leccions'])->get();
+		$clases = Curso::withCount(['leccions'])->get();
 		$this->clases = $clases;
-		$clase =  Clase::where('id',$id)->first();
-		$this->curso =  $clase->curso;
+		$clase =  Curso::where('id',$id)->first();
+		$this->curso =  $clase;
 		$this->lecns =  $clase->leccions;		
 	}
 
 
 	public function show($id){
 		$this->list= '';
-		$this->show_lecns= '';
+		$this->default();
 		$this->class_select = '';
 		$this->show = true;
 		//$this->edit();
@@ -170,31 +165,22 @@ public function AddField(){
 
 
 
+
+
 public function upload_save(Request $request){	
-	$this->validate(['files'=>  'max:4096',  'visibility'=>'required'  ]);
-	//validar nombres de files correctos
-	$class = Clase::where('curso_id','=',$this->curso_id)->first();
-		if(empty($class)){ //si clase no existe la crea
-	   		$class = Clase::create([
-			'curso_id' => $this->curso_id,
-			'user_created' => Auth::user()->id,
-			 ]);
-		}
-
-	
-
-
-	$lec = Leccion::where('clase_id','=',$class->id)->where('leccion','=',$this->leccion)->first();
-		if(empty($lec)){ 
+	$this->validate(['files'=>  'max:4096',  'visibility'=>'required'  ]);	
+	$lec = Leccion::where('curso_id','=',$this->curso_id)->where('leccion','=',$this->leccion)->first();	
+	 	if(empty($lec)){ 
 			$lec = Leccion::create([
-			'clase_id' => $class->id,
+			'curso_id' => $this->curso_id,
 			'leccion' => $this->leccion,
 			'texto' => $this->texto,
 			'urlExt' => $this->urlExt,
 			'url' => $this->url,
 			'visibility' => $this->visibility,
 			'user_created' => Auth::user()->id
-			 ]);		
+			 ]);
+			 $this->lec = $lec;		
 		}else{ //sino esta vacia actualiza leccion
 			$lec->url = $this->url;
 			$lec->urlExt = $this->urlExt;
@@ -202,7 +188,7 @@ public function upload_save(Request $request){
 			$lec->visibility = $this->visibility;			
 			$lec->user_updated = Auth::user()->id;
 			$save = $lec->save();
-		}
+	 	}
 		if($this->files){
 			// $this->validate(['files.*'=>  'max:1024']);
 			 $files = count($this->files);
@@ -213,12 +199,7 @@ public function upload_save(Request $request){
 					
 					// $image_resize = Image::make($file->getRealPath());
      //   			 	$image_resize->resize(300,300);
-
-
-
 			        $upload = $file->store('Files');
-
-
 			 		$save = FilesLeccion::create([
 						'leccion_id' => $lec->id,
 						'file' => $upload,
@@ -235,6 +216,18 @@ public function upload_save(Request $request){
 	   	return back()->with('error','Error de al intentar guarda el registro, verif');
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 public function delet_url($id){
@@ -297,6 +290,7 @@ public function default(){
 	$this->img='';
 	$this->lecN='';
 	$this->urlExt='';
+	$this->show_lecns= '';
 }
 
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Leccion extends Model
 {
     protected $table = 'leccions';
-    protected $fillable = ['clase_id', 'leccion', 'texto', 'url','urlExt','visibility', 'user_created', 'user_updated'];
+    protected $fillable = ['curso_id', 'leccion', 'texto', 'url','urlExt','visibility', 'user_created', 'user_updated'];
 
 
     // public function comments()
@@ -19,6 +19,11 @@ class Leccion extends Model
  	public function clase()
     {
         return $this->belongsTo(Clase::class);
+    }
+
+    public function curso()
+    {
+        return $this->belongsTo(Curso::class);
     }
 
     public function files()

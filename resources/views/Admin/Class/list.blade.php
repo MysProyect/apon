@@ -10,17 +10,17 @@
 			<br>
 			<table class="table">   		
 				<thead class="thead-dark"> 			
-				<tr align="center">        			
-					<th>Courses</th>
-					<th>lections</th>
+				<tr align="center" class="display-6">        			
+					<th>Cursos</th>
+					<th>Nª lections</th>
 				</tr>
 				</thead>
 				<tbody> 
 					<?php $i=0; ?>
 				@foreach($clases as $class)    		
-				<tr>
+				<tr class="display-7">
 				  
-					<td>{{ $class->curso['title']  }}</td>
+					<td>{{ $class->title  }}</td>
 					
 	
 					
@@ -31,7 +31,7 @@
 	            	</td>
 
 	            	@else
-	            	<td class="text-center text-muted">vacio</td>
+	            	<td class="text-center text-muted display-7">vacia</td>
 	                @endif
 
 	

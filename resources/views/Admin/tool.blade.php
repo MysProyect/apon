@@ -14,7 +14,7 @@
 			 <div class=" display-6" title="Responsabls" style="padding: 3%;">
 			    <a href="{{ route('resp-livew')}}"  class="img-tool-admin">
 					<img src="{{asset('images/resp.png')}}" >
-					<span class="display-6 none">Responsabl's</span>
+					<span class="display-6 none">Facitador's|Responsabl's</span>
 				</a>	
 			 </div>		  
 			<!-- PARTICIPANTS -->	

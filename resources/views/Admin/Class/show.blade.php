@@ -1,1 +1,1 @@
-<label class="text-center display-8">trabajndo...........</label>
+<label class="text-center display-5 text-danger">trabajndo...........</label>

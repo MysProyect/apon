@@ -43,11 +43,11 @@
 	<img src="{{asset('images/cursos.gif')}}" title="Cursos" >
 	<!-- <img src="{{asset('images/cursos-online.png')}}" class="curs-home"> -->
 	</a>	
-	<img src="{{ asset('images/tool.gif') }}" class="none" >
-</div> 
+	<!-- <img src="{{ asset('images/tool.gif') }}" class="none" > -->
+<!-- </div> 
 
 <div align="right">
-
+ -->
 		<a class="nav-link text-center" href="{{ route('aulas')}}" id="aula" title="Tu Aula Virtual - Entrar">
 			<!-- 	<img src="{{asset('images/GIF/clases-online.gif')}}" >	 -->	
 				<img src="{{asset('images/GIF/aula.gif')}}" >	

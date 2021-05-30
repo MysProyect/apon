@@ -7,9 +7,9 @@
 @foreach($lecns as $N)
 
 	@if ($N->visibility == 1)
-		<li wire:click="show({{$N->id}})" class="text-primary display-7 cursor" >Leccion {{$N->leccion}}</li>
+		<li wire:click="show({{$N->id}})" class="text-primary display-7 cursor" title="detail...">Leccion {{$N->leccion}}</li>
 	@else
-		<li wire:click="show({{$N->id}})" class="text-muted">Leccion {{$N->leccion}}</li>
+		<li  class="text-muted">Leccion {{$N->leccion}}</li>
 	@endif
 @endforeach
 <br><br>
@@ -18,3 +18,4 @@
 		<label class="text-muted">NO-visible</label>
 	</div>
 </div>
+
