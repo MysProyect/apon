@@ -20,7 +20,7 @@ class CreateUserAulasTable extends Migration
             $table->unsignedBigInteger('part_id')->nullable();
             $table->unsignedBigInteger('curso_id')->nullable();
             $table->unsignedBigInteger('clase_id')->nullable();
-            $table->string('usuario')->unique();
+            $table->string('usuario');
             $table->string('email');
             $table->string('password');
              $table->timestamps();
