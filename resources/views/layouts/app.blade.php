@@ -16,8 +16,7 @@
 
    <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}" />
       @livewireStyles 
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  </head> 
 
 
@@ -47,18 +46,17 @@
           AulaVirtual
         </a>       
       </li>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;
       <li class=" nav-item {{ request()->routeIs('contactanos') ? 'active' : ''}} {{ request()->routeIs('welcome') ? 'd-lg-none' : ''}} {{ request()->routeIs('contactanos') ? 'd-lg-none' : ''}}"  >        
         <a class="" href="{{ route('contactanos') }}" data-toggle="modal" data-target="#contacModal"  style="cursor: pointer;">
         <img src="{{asset('images/icons/write.png')}}"  class="img-write-link" title="Contactacnos">
         </a>
       </li>
 
-    <form class="form-inline" style="">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="background:  #d1cdcc; font-kerning: bold">
-      <button class="btn  text-danger" type="submit">  <img src="{{asset('images/icons/searh2.png')}}" width="70"></button>
-    </form>
-
+  <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search.." name="search2">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
  </ul>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>

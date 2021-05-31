@@ -38,6 +38,9 @@ Route::get('/img', function () {
 
 
 
+Route::get('/search', function () {
+    return view('search');
+});
 
 
 

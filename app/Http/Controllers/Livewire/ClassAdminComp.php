@@ -16,20 +16,20 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Atr;
 use App\Http\Controllers\Livewire\Storage;
 
-//se fuciono lecciones directamente telacionado con los cursos, tabla clases esta de mas, la valiable $class y $clases, se utilizaron para mostras relacion de curso con leccion
+//se fuciono lecciones directamente telacionado con los cursos, tabla clases esta de mas, la valiable $class y $clases, se utilizaron para mostras relacion de curso con leccion, falta ManuAulas para ignorar totalmente la table clase
 
 
 class ClassAdminComp extends Component
 {
 	use WithFileUploads;
 
-	public $class_select = true, $img, $edit='', $create='', $cursos, $curso, $curso_id, $title, $leccion, $urlExt;
-	public $lecN;
-	public $mensaj, $visibility;
-	public $clases, $list, $lecns, $show_lecns, $show;
 
-	public $class;
-	//public  $lecs, $atras, $NroCS, $lec, $image, $upload, $delet, $file, $name, $clase_name ;
+	public $class_select = true, $img, $edit, $create, $cursos, $curso, $curso_id, $title, $leccion, $urlExt;
+	public $files=[], $url, $texto, $files_lec,  $errorfield;
+	public $fields, $lec, $NroCS, $lecN;
+	public $mensaj, $list, $exist, $image, $busc, $upload, $delet, $visibility;
+	public $class, $clases, $name, $file, $lecs, $clasSec, $show_lecns, $show, $lecns, $clase_name, $atras;
+
 
     public function render()
     {

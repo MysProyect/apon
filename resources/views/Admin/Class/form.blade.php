@@ -24,9 +24,9 @@
 
 							@endfor
 
-				<!-- 		@error('files')
+						@error('files')
 							<label class="alert-danger">¡archivo no valido!</label>
-						@enderror -->
+						@enderror
 						</div>
 						<div class="form-group">
 							<a href="#" class="btn btn-primary" wire:click.prevent="AddField"><b>Add +</b></a>
