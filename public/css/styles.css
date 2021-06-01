@@ -17,6 +17,7 @@ footer{ width:100%;   height: auto;  position: absolute; bottom: 0; color: black
  	.navbar-dark-2{ background:  #736f6e ; }
 }
 
+.list-curso{border-top: 2px solid; border-top-right-radius:10%; border-top-left-radius:10%; color:rgba( 202, 194, 193);  margin-top: 3%;}
 .bigicon {
     font-size: 3rem;
     color: #36A0FF; }
@@ -49,8 +50,8 @@ footer{ width:100%;   height: auto;  position: absolute; bottom: 0; color: black
 }
 .img-tam{width:70%; height:120%;}
 
-.img-lec{width:100%;}
-
+/*/.img-lec{width:100%;}*/
+.img-lec img {width:1%;}
 
 .text {
     display: inline-block;

@@ -21,7 +21,7 @@
 			<div class="" title="Participants" style="padding: 3%;">
 				<a href="{{ route('part-livew') }}"  class="img-tool-admin">
 					<!-- <img src="{{asset('images/participants.png')}}" > -->
-					<img src="{{ asset('images/participants.gif') }}" class="none" >
+					<img src="{{ asset('images/GIF/participants.gif') }}" class="none" >
 					<span class="display-5 none">Participant's</span>
 				</a>
 			</div>	
@@ -32,7 +32,7 @@
 						<span class="display-6 none">User's</span>
 				</a>                           	  
 			</div>
-				<img src="{{ asset('images/tool.gif') }}" class="none" >
+				<img src="{{ asset('images/GIF/tool.gif') }}" class="none" >
 				
 		
 		</div>
@@ -50,7 +50,7 @@
 			<!-- Virtual Class  -->
 			<div class="" title="entrar al Aula Virtual" style="padding: 2%;" >
 				<a href="{{ route('class')}}" class="img-tool-admin" title="Administrar class-aulas Virtual"> 
-					<img src="{{ asset('images/class-virtual.gif')}}"  >
+					<img src="{{ asset('images/GIF/class-virtual.gif')}}"  >
 					 <span  class="display-5 none">class-aulas Virtual</span>
 				</a> 	
 			</div> 

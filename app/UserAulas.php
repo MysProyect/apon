@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserAulas extends Model
 {	
 	protected $table = 'user_aulas';
-  protected $fillable = ['part_id', 'curso_id', 'clase_id', 'usuario','email', 'password']; 
+  protected $fillable = ['part_id', 'curso_id', 'usuario','email', 'password']; 
 
   protected $hidden = [ 'password', 'remember_token', ];
   
@@ -16,13 +16,13 @@ class UserAulas extends Model
 		return $this->belongsTo(Participant::class);
 	}
 
-	public function clases()
-    {
-       	 return $this->belongsTo(Clase::class, 'clase_id');
-    }
+	// public function clases()
+ //    {
+ //       	 return $this->belongsTo(Clase::class, 'clase_id');
+ //    }
   public function curso()
     {
-         return $this->belongsTo(Curso::class, 'clase_id');
+         return $this->belongsTo(Curso::class);
     }
 
     public function visitas()

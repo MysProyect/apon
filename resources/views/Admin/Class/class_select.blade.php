@@ -33,7 +33,7 @@
 							@elseif($edit)
 								<img src="{{asset('images/GIF/update.gif')}}">
 							@else								
-								<img src="{{asset('images/admin-class.gif')}}" class="cursor">		
+								<img src="{{asset('images/GIF/admin-class.gif')}}" class="cursor">		
 							@endif
 							</div>	&nbsp;&nbsp;&nbsp; 
 							<div>

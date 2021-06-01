@@ -19,21 +19,20 @@ class CreateUserAulasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('part_id')->nullable();
             $table->unsignedBigInteger('curso_id')->nullable();
-            $table->unsignedBigInteger('clase_id')->nullable();
             $table->string('usuario');
             $table->string('email');
             $table->string('password');
              $table->timestamps();
 
              
-            $table->foreign('clase_id')->references('id')->on('clases')
-            ->onUpdate('cascade')->onDelete('set null');
+            $table->foreign('curso_id')->references('id')->on('cursos')
+            ->onUpdate('cascade')->onDelete('cascade');
             
             // $table->foreign('curso_id')->references('id')->on('cursos')
             // ->onUpdate('cascade')->onDelete('set null');
             
             $table->foreign('part_id')->references('id')->on('participants')
-            ->onUpdate('cascade')->onDelete('set null');
+            ->onUpdate('cascade')->onDelete('cascade');
 
            
         });

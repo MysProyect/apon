@@ -3,15 +3,16 @@
              <span aria-hidden="true close-btn"><img src="{{asset('images/icons/close.png')}}" width="50" ></span>
           </button>
       </div>
- <div class="form-group"  style="margin-top: 3%; ">
- <img src="{{asset('images/icons/busc.gif')}}" /> 
- 		<!-- <input type="text" wire:model="curso_id" value="{{$curso_id}}" class="d-lg-none"> -->
- 		<input type="text" wire:model="cedula"  class="display-5" placeholder="Ingrese cedula de Identidad" autofocus required  onkeyUp="return ValNumero(this);" wire:change="verif({{ $curso_id }})" autofocus style="text-align: center" />
-		@error('cedula')
-			<label class="alert-danger">Cedula Obligatoria</label>
-		@enderror
-
-</div>
+@if($inputcedula)
+	 <div class="form-group"  style="margin-top: 3%; ">
+	 <img src="{{asset('images/icons/GIF/busc.gif')}}" /> 
+	 		<!-- <input type="text" wire:model="curso_id" value="{{$curso_id}}" class="d-lg-none"> -->
+	 		<input type="text" wire:model="cedula"  class="display-5" placeholder="Ingrese cedula de Identidad" autofocus required  onkeyUp="return ValNumero(this);" wire:change="verif({{ $curso_id }})" autofocus style="text-align: center" />
+			@error('cedula')
+				<label class="alert-danger">Cedula Obligatoria</label>
+			@enderror
+	</div>
+@endif
 <div  style="margin:2%; " class="text-center">
 
 @if($UserAula)

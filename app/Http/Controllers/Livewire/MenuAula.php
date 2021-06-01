@@ -8,7 +8,6 @@ use App\Participant;
 use App\Incription;
 use App\UserAulas;
 use App\Visit;
-use App\Clase;
 use App\Leccion;
 use App\FilesLeccion;
 
@@ -63,13 +62,10 @@ class MenuAula extends Component
 		$this->regist = '';
 		$this->logeat = true;
 		$this->continue = '';
-		$this->curso = $curso;		
+		$this->curso = $curso;	
+		$this->clear();	
 		// $this->curso_id = $curso->id;
 	}
-
-
-
-
 
 
 
@@ -125,66 +121,64 @@ class MenuAula extends Component
 
 
 
-
-
-
-public function back(){
-	$this->aula = true;
-	// $this->edit='';
-	$clas = Clase::where('curso_id',$this->curso_id)->first();
-	$lec = Leccion::where('clase_id', $clas->id)->orderBy('id','asc')->get();
-	$this->lec = $lec;
-	$this->show_lecc='';
-}
-
-
-public function Preg_regist(){
-
-}
-
 public function regist($id){
 		$curso = Curso::find($this->curso_id);
 		$this->curso_id = $this->curso_id;			
 		$this->clear();
+		$this->inputcedula=true;
 		$this->verif = true;		
 		$this->logeat = '';	
 }
+
+
+
+
+public $inputcedula;
+
+
+
 
 
 public function verif($id){ 
 	$this->part = '';
 		$this->validate(['cedula' => 'required']); 
 		$part = Participant::where('cedula',$this->cedula)->first();
-		$this->part = $part;
-		$this->regist = true;
+		
+	
 		if ($part){
+			$this->part = $part;		
 			$insc = Incription::where('part_id',$part->id)->where('curso_id',$this->curso_id)->where('conf', 1)->first();
 			//$this->insc = $insc;
 			if($insc){
 				$this->part = $part;	
 				$this->part_id = $part->id;
-				$clas = Clase::where('curso_id',$this->curso_id)->first();
+				$clas = Curso::where('id',$this->curso_id)->first();
 				if($clas){			
-			  		$UserAula = UserAulas::where('part_id',$part->id)->where('clase_id',$clas->id)->first();
+			  		$UserAula = UserAulas::where('part_id',$part->id)->where('curso_id',$clas->id)->first();
 			  	
 				  	if($UserAula){
 				  		$this->continue = '';	
-						$this->UserAula = true;  
-
+				  		$this->regist = '';
+				  		$this->UserAula = '';
+				  	 	$this->continue = '';
+				  	 	$this->cedula = '';
+						$this->resetAula = true;  
 				  	}else{ // llama a view registrarse
+				  		$this->regist = true;
+				  		$this->UserAula = '';
 				  	 	$this->continue = '';
 				  	 	$this->cedula = '';
 				  	}			  		
 				}else{
 					$this->view();
-					$this->continue = true;
+					$this->close();
       
         			return back()->with('alert','Este curso no ha dado inicio!, consulte con el administrador');	
 				} 	
 			}else{
 				$this->clear();
-
-				$this->continue = '';
+				$this->view();
+				$this->close();
 
 			  	//return back()->with('alert', 'disculpe no esta inscrito en el curso, o debe esperar sea  confirnada su inscripcion!!');
 			  	request () -> session () -> flash ('alert','disculpe no esta inscrito en el curso, o debe esperar sea  confirnada su inscripcion!!');	
@@ -201,23 +195,11 @@ public function verif($id){
 			request () -> session () -> flash ('alert','No existe en nuestra base de datos, puede 	que no se haya inscrito');	
 			
 		}
+		$this->inputcedula='';
 
 	}
 	
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -234,12 +216,13 @@ public function verif($id){
         'password' => 'required|min:5|max:10|confirmed',
         ]);
 		//$part = Participant::where('id',$id)->first();
-        $clas = Clase::where('curso_id',$this->curso_id)->first();
+		$curso = Curso::find($this->curso_id);
+        $clas = Curso::where('id',$this->curso_id)->first();
         if ($clas){
          $NewAula = UserAulas::create([
 		 'part_id' => $this->part_id,
 		 'curso_id' => $this->curso_id,
-		 'clase_id' => $clas->id,		
+		 // 'clase_id' => $clas->id,		
 		 'usuario' => $this->usuario,
 		 'email' => $this->email,
 		 'password' => bcrypt($this->password)	
@@ -252,7 +235,6 @@ public function verif($id){
   //	   $NewAula = new UserAulas;
   //       $NewAula->part_id = $this->part_id;
   //       $NewAula->curso_id = $this->curso_id;
-  //       $NewAula->curso_id = $this->curso_id;
   //       $NewAula->email = $this->email;
   //       $NewAula->usuario = $this->usuario;
   //       $NewAula->password = bcrypt($this->password);
@@ -262,25 +244,24 @@ public function verif($id){
 				'usuario_id' => $NewAula->id,
 				'visita' => now()->toDateTimeString()
 			]);
-			$curso = Curso::find($this->curso_id);
+			
 			$this->curso_id = $curso->id;
 			$this->curso = $curso;			
 
-			DB::table('usuario_clases')->insert(
-    			['usuario_id' => $NewAula->id, 'clase_id' => $clas->id]
-			);
+			// DB::table('usuario_clases')->insert(
+   //  			['usuario_id' => $NewAula->id, 'curso_id' => $clas->id]
+			// );
 
-			$lec = Leccion::where('clase_id', $clas->id)->where('visibility','=', 1)->get();
+			$lec = Leccion::where('curso_id', $this->curso_id)->where('visibility','=', 1)->get();
 			if ($lec){
 				$this->lec = $lec;
 			}else{
 				$this->lec = "Disculpe, en este momento 'no hay informacion para mostrar";
 			}
 			$this->view();
-			//ACCEDIENDO ATRAVEZ DEL REGISTRO
+					//ACCEDIENDO ATRAVEZ DEL REGISTRO
 			$this->auth = $NewAula;
-			$this->aula = true;			
-			
+			$this->aula = true;				
 		}else{
 			return back()->with('alert','ocurrio un error verifique!');
 		}
@@ -295,12 +276,13 @@ public function verif($id){
 	public function resetAula($id){
 		$this->clear();
 		$this->curso = Curso::where('id',$this->curso_id)->first();
-		$clas = Clase::where('curso_id',$this->curso_id)->first();
+		$clas = Curso::where('id',$this->curso_id)->first();
 		$this->clas = $clas->id;
 		$part = Participant::where('id',$id)->first();
 		$this->part = $part;
-		$aula = UserAulas::where('clase_id', $clas->id)->where('part_id',$part->id)->first();		
+		$aula = UserAulas::where('curso_id', $clas->id)->where('part_id',$part->id)->first();		
 		$this->resetAula = true;
+		$this->regist = '';
 		$this->clearResetAula();
 		$this->usuario = $aula->usuario;
 		$this->email = $aula->email;
@@ -314,14 +296,14 @@ public function verif($id){
 	        'usuario' => 'required|min:5|max:10',
 	        'password' => 'required|min:5|max:10|confirmed',
 	        ]);
-		$aula = UserAulas::where('clase_id', $this->clas)->where('part_id',$this->part->id)->first();	
+		$aula = UserAulas::where('curso_id', $this->clas)->where('part_id',$this->part->id)->first();	
 		$this->aulaUser= $aula->usuario;
 		if ($aula->usuario != $this->usuario){
 			//$this->var='distintas';
 		 		$this->validate([
 		 			'usuario' => 'unique:user_aulas']);
 		}
-		// 	// $clas = Clase::where('curso_id',$this->curso_id)->first();
+		// 	// $clas = Curso::where('curso_id',$this->curso_id)->first();
 		// 	//$this->clas = $clas;
 		// 	// $part = $this->part;
 	       $aula->usuario = $this->usuario;
@@ -336,6 +318,25 @@ public function verif($id){
 	
 
 	}
+
+
+
+
+
+
+public function back(){
+	$this->aula = true;
+	// $this->edit='';
+	$clas = Curso::where('id',$this->curso_id)->first();
+	$lec = Leccion::where('curso_id', $clas->id)->orderBy('id','asc')->get();
+	$this->lec = $lec;
+	$this->show_lecc='';
+}
+
+
+public function Preg_regist(){
+
+}
 
 	public function clearResetAula(){
 		$this->verif = '';
@@ -364,8 +365,8 @@ public function verif($id){
 			$this->auth = $auth;
 			// select todas las secciones de este curso
 			// consultar tabla usuario_clases para traer los usuario de dicha clases segun en curso seleccionado 		
-			$clas = Clase::where('curso_id',$this->curso_id)->first();
-			$lec = Leccion::where('clase_id', $clas->id)->orderBy('id','asc')->get();
+			$clas = Curso::where('id',$this->curso_id)->first();
+			$lec = Leccion::where('curso_id', $clas->id)->orderBy('id','asc')->get();
 			if ($lec){
 				$this->lec = $lec;
 			}else{
@@ -401,17 +402,12 @@ public function verif($id){
 	}
 
 
-
-
-
-
 	public function aula($id){
 		$this->lecId = '';
 		$this->aula = true; //ACCEDIENDO atraves del registro
-		$clas = Clase::where('curso_id',$this->curso_id)->first();
-		$curso = Curso::where('id',$this->curso_id)->first();
+		$clas = Curso::where('id',$this->curso_id)->first();
 		$this->clas = $clas;
-		$lec = Leccion::where('clase_id', $clas->id)->orderBy('id','asc')->get();
+		$lec = Leccion::where('curso_id', $clas->id)->orderBy('id','asc')->get();
 		$this->lec = $lec;
 	}
 		
@@ -432,9 +428,9 @@ public $lecId;
 		$this->aula = '';
 		$this->show_lecc = true; 
 		$this->show = $id;
-		$clas = Clase::where('curso_id',$this->curso_id)->first();
+		$clas = Curso::where('id',$this->curso_id)->first();
 		// $lecc = Leccion::where('leccion',$id)->get();
-		$lecId = Leccion::where('clase_id', $clas->id)->where('id',$id)->first();
+		$lecId = Leccion::where('curso_id', $clas->id)->where('id',$id)->first();
 		//$lec = Leccion::where('leccion',$id)->get();
 		$this->lecId = $lecId;
 

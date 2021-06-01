@@ -146,7 +146,7 @@ class RegisterController extends Controller
 
 
       if(Auth::user()){
-            $NewUser->id_user_created = Auth::user()->id;
+            $NewUser->user_created = Auth::user()->id;
             $NewUser->save();
             return redirect()->route('AdmUser')->with('mensaje','¡¡¡Nuevo User registrado!!!');
        }else{

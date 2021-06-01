@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
             $table->string('password'); 
             $table->unsignedBigInteger('profession_id')->nullable();
             $table->unsignedBigInteger('profile_id')->nullable();
-            $table->integer('id_user_created')->nullable();
-            $table->integer('id_user_updated')->nullable();
+            $table->integer('user_created')->nullable();
+            $table->integer('user_updated')->nullable();
             $table->integer('statud')->default('1');
             $table->rememberToken();
 

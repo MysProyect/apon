@@ -1,11 +1,11 @@
 <div class="container">
 	@if (session('mensaje'))
-		<div class="alert alert-success text-center" style="margin-top: 1%">             
+		<div class="alert alert-success text-center display-6" style="margin-top: 1%">             
 			{{ session('mensaje') }}
 		</div>
 	@endif
 	@if (session('alert'))
-		<div class="alert alert-danger text-center" style="margin-top: 1%">             
+		<div class="alert alert-danger text-center display-6" style="margin-top: 1%">             
 			{{ session('alert') }}
 			 <a class="" href="{{ route('contactanos') }}" data-toggle="modal" data-target="#contacModal" >contactenos...</a>
 		</div>
@@ -24,7 +24,7 @@
 
 	    	
 		<div align="center" style=" margin-top: 2%;">
-				<img src="{{asset('images/ir.gif')}}" class="cursor">
+				<img src="{{asset('images/GIF/ir.gif')}}" class="cursor">
 				<img src="{{asset('images/continue.png')}}" width="200"  wire:click="continue" class="cursor">
 		</div>
 	</div>

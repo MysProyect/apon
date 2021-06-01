@@ -43,16 +43,8 @@ class Curso extends Model
         return $query->where('statud', 1);
     }
 
-    public function clase()
-    {
-        return $this->hasOne(Clase::class);
-    }
 
 
-    public function parts()
-    {
-        return $this->hasManyThrough(Incription::class, Participant::class, 'id','part_id');
-    }
 
 
 
@@ -64,7 +56,7 @@ class Curso extends Model
 
    public function aulas() //toll aulas del mismo curso
     {
-        return $this->hasManyThrough(UserAulas::class, Clase::class);
+        return $this->hasMany(UserAulas::class);
     }
 
 
@@ -74,20 +66,11 @@ class Curso extends Model
 
 
     //POR VALIDAR
-
-
-       // public function parts()
-       //  {
-       //      return $this->hasManyThrough(Participant::class, Incription::class, 'curso_id', 'id', 'id_part');
-       //  }
-
-
-
-
+    
     // public function parts()
     // {
-    //     // return $this->hasManyThrough(Participant::class, Incription::class);
-    //     return $this->hasMany(Participant::class, 'part_id');
+    //     return $this->hasManyThrough(Participant::class, Incription::class, 'part_id');
     // }
+
 
 }

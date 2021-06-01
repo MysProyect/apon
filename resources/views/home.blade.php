@@ -40,10 +40,10 @@
 	<div class="text text-4">S</div>
 	<div class="text text-2">0</div>
 	<div class="text text-3">S</div> -->
-	<img src="{{asset('images/cursos.gif')}}" title="Cursos" >
+	<img src="{{asset('images/GIF/cursos.gif')}}" title="Cursos" >
 	<!-- <img src="{{asset('images/cursos-online.png')}}" class="curs-home"> -->
 	</a>	
-	<!-- <img src="{{ asset('images/tool.gif') }}" class="none" > -->
+	<!-- <img src="{{ asset('images/GIF/tool.gif') }}" class="none" > -->
 <!-- </div> 
 
 <div align="right">

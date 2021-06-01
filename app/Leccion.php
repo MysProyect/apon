@@ -16,10 +16,6 @@ class Leccion extends Model
     // }
 
 
- 	public function clase()
-    {
-        return $this->belongsTo(Clase::class);
-    }
 
     public function curso()
     {
@@ -31,15 +27,10 @@ class Leccion extends Model
 	   return $this->hasMany(FilesLeccion::class);
 	}
 
-
-    // public function scopePublished($query)
-    // {
-    //     return $query->where('visibility', 0);
-    // }
-    // public function curso()
-    // {
-    //      return $this->belongsThrough(Curso::class, Clase::class);
-    // }
+    public function scopePublished($query)
+    {
+        return $query->where('visibility', 0);
+    }
 
 
 

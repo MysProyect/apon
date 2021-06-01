@@ -1,7 +1,7 @@
 
  <div class="wrapper fadeInDown">
 
-  <h1 class="display-6"> Restablecer datos de acceso</h1>
+  <h1 class="display-6 text-center text-success"> Restablecer datos de acceso</h1>
     
   <div id="formContent">
       <div align="right">

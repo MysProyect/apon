@@ -16,7 +16,7 @@
   @foreach( $cursos as $curso)
 
   
-    <div style="border-top: 2px solid; border-top-right-radius:10%; border-top-left-radius:10%; color:rgba( 202, 194, 193);  margin-top: 3%;">
+    <div class="list-curso">
      		<p class="display-5 text-primary text-center text-uppercase" style="width: 80%;" >{{ $curso->title}}</p>				   
  	    <div align="center" class="img-curs-menu">         
           @if($curso->img)          
@@ -25,7 +25,7 @@
               <img src="{{ asset('images/no-img.png') }}" class="img-curs"/>
           @endif
        
-   			<div  style="padding:0; width: 80%;">	
+   			<div  style="padding:0; width: 50%;">	
           @if($curso->description)
           <!--   <small class="text-muted">{{$curso->description}}</small> -->
             <?php $tam = strlen($curso->description); ?>
@@ -39,17 +39,18 @@
     				  <p>Descripcion No disponible</p>
     			@endif
           @if($curso->inscs_count > 0)
-                <p class="display-5 text-center text-success"> {{ $curso->inscs_count }} participantes</p>   
+                <p class="display-7 text-center text-success"> {{ $curso->inscs_count }} participantes</p>   
           @endif
-          @if($curso->duracion)
-              <small class="text-primary display-6"><br>duracion: {{$curso->duracion}}</small>
+          @if($curso->duration)
+              <small class="text-primary display-6"><br>duracion: {{$curso->duration}}</small>
           @endif
       	</div>
 
      
      <div style="display: flex;">
         <div align="center" style="width: 100%;">
-          <input type="button" value="Participar | inscribirse"  wire:click="insc({{ $curso->id }})" class="btn btn-warning" style=""> <img src="{{asset('images/icons/inscripcion.png')}}" width="80">
+          <input type="button" value="Participar | inscribirse"  wire:click="insc({{ $curso->id }})" class="btn btn-warning" style="">
+           <img src="{{asset('images/icons/inscripcion.png')}}" width="100" height="70">
       </div>
 
       <!-- button y modal -->
@@ -99,7 +100,7 @@
       
         </div>
   </div>
-  </div> 
+  </div> <br><br>
    @endforeach
 
      <div style="color:blue; margin-top: 10%;">

@@ -18,18 +18,18 @@ class CreateLeccionsTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('curso_id')->nullable();
-            $table->unsignedBigInteger('clase_id')->nullable();
             $table->unsignedBigInteger('leccion');
             $table->text('texto')->nullable();
             $table->string('url')->nullable();
             $table->string('urlExt')->nullable();
             $table->integer('visibility')->default('1');
-            $table->integer('user_created');
-            $table->integer('user_updated')->nullable();
+            $table->unsignedBigInteger('user_created')->nullable();
+            $table->unsignedBigInteger('user_updated')->nullable();
             $table->timestamps();
 
             $table->foreign('curso_id')->references('id')->on('cursos'); 
-            $table->foreign('clase_id')->references('id')->on('clases');
+            $table->foreign('user_created')->references('id')->on('users'); 
+            $table->foreign('user_updated')->references('id')->on('users'); 
         });
     }
 
