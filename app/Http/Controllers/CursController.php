@@ -14,20 +14,138 @@ use App;
 // Desde Admin
 class CursController extends Controller
 {
-		 public function construct(){
+	public function construct(){
 			$this->middleware('auth');
-		  }
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    
     public function index(){
-         $cursos = App\Curso::orderBy('id','DESC')->paginate(4);
+        $cursos = App\Curso::orderBy('id','DESC')->paginate(4);
+         // $cursos = App\Curso::all();
+         // foreach ($cursos as $key => $curs) {
+         // 	$exists = Storage::disk('local')->has($curs->img);
+         // 	$i=0;
+         // 	if ($exists){
+         // 		echo "existe";
+         // 	}else{
+         // 		echo "<br>no hay";
+         // 		$noimg[]=$curs;                                       
+         // 	}
+         // //	echo $curs->title;
+         // }
+         // echo $cursos;
 		return view('Admin.cursos.index',compact('cursos'));
     }
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function show($id) {    
         $resp = App\Responsabl::all();
 		$ver = App\Curso::findOrFail($id);
 		return view('Admin.cursos.detaill',compact('ver','resp'));
     }      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function create()
     {

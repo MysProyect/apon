@@ -18,12 +18,25 @@
   
     <div class="list-curso">
      		<p class="display-5 text-primary text-center text-uppercase" style="width: 80%;" >{{ $curso->title}}</p>				   
- 	    <div align="center" class="img-curs-menu">         
-          @if($curso->img)          
+ 	    <div align="center" class="img-curs-menu">  
+
+
+      <?php  $exists = Storage::disk('local')->has($curso->img); ?>
+      <div>
+           @if ($exists)
+              <img src="{{ Storage::url("$curso->img") }}" class="img-curs-4"/>
+           @else
+            
+            <img src="{{$curso->img}}" class="img-curs-4">               
+           @endif
+      </div>
+
+
+     <!--      @if($curso->img)          
               <img src="{{ Storage::url("$curso->img") }}" alt="imagen no disponible" />          
           @else
               <img src="{{ asset('images/no-img.png') }}" class="img-curs"/>
-          @endif
+          @endif -->
        
    			<div  style="padding:0; width: 50%;">	
           @if($curso->description)

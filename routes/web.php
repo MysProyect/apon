@@ -107,7 +107,7 @@ Route::post('/edit-curs/{id}','CursController@statud')->name('statud')->middlewa
 // Route::resource('post','PostController');
 
 //rutas livewire Protegidas (ADMIN)
-Route::middleware('auth:web')->group(function () {
+Route::middleware('auth:web')->group(function () { //esta dos veces protegidas
 
     Route::get('/privileged-user', function(){
 		return view('Admin.tool');
@@ -138,9 +138,8 @@ Route::middleware('auth:web')->group(function () {
 	})->name('mensajs')->middleware(['auth','verified']);
 	
 
-	
-		//RUTAS PDF
 	Route::get('/Admin.inscription', InscriptionComp::class,'destroy');
+		//RUTAS PDF
 	Route::get('/Admin.inscription/{id}', 'PdfController@ConfPDF')->name('ConfPDF');
 	Route::get('/Participantes', 'PdfController@ExpPart')->name('ExpPart');
 	Route::get('/Respons|Facilitadores', 'PdfController@ExpResp')->name('ExpResp');

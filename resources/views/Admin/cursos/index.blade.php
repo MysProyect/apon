@@ -44,7 +44,19 @@
 							@else
 							    <p>Descripcion No disponible</p>
 							@endif
-						</div>
+						</di>
+
+         <?php	$exists = Storage::disk('local')->has($item->img); ?>
+         <div>
+	         @if ($exists)
+	          	<img src="{{ Storage::url("$item->img") }}" class="img-curs-2"/>
+	         @else
+	         	
+	         	<img src="{{$item->img}}" class="img-curs-3">               
+	         @endif
+	    </div>
+
+<!-- 
 						 <div >
 					          @if($item->img)
 					              <img src="{{ Storage::url("$item->img") }}" alt="imagen no disponible" class="img-curs-2"/>
@@ -53,7 +65,16 @@
 					          @endif
 					     </div>
 			
+ -->
+
+
 					</div>
+
+
+
+
+
+
 			        @if($item->duration)
 	                        <small class=" display-6 text-primary-2"><b>Duration {{$item->duration}}</b></small>
 	                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	                
