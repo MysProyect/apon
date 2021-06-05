@@ -2,9 +2,9 @@
  
     <form wire:submit.prevent="send">
         <div>       
-            <img src="{{asset('images/icons/answer.png')}}" class="img-answer" > 
+            <img src="{{asset('images/icons/answer.png')}}" class="img-answer" width="70" height="90"> 
         </div>           
-            <textarea wire:model="message" class="form-control" placeholder="indique respuesta/volver a responder" id="message" rows="7" cols="50"></textarea>
+            <textarea wire:model="message" class="form-control" placeholder="indicate your answer" id="message" rows="7" cols="50"></textarea>
   
 
         

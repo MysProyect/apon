@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profession extends Model
 {
 	
-
+     public $timestamps = FALSE;
     //protected $table = 'professions';
     protected $fillable = ['name','abrev'];
 
@@ -27,5 +27,6 @@ class Profession extends Model
         return $this->hasMany(User::class);
     }
 
+    // otra funcion importante de recordar ->withTimestamps(); para marcas de tiempo en las relaciones
 
 }

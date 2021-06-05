@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use PDF;  //download
 use App\Responsabl;
 use App\Profession;
 use App\Incription;
@@ -49,6 +50,19 @@ class ResponsablsComponent extends Component
 				})->orderBy('id','desc')->paginate(10) 
 		]);
     }
+
+
+
+
+
+    public function pdf(){
+    	$resps = Responsabl::all();
+    	$pdf = PDF::loadView('livewire.responsabls-pdf',compact('resps'));
+        return $pdf->setPaper('a4', 'landscape')->download('Download-pdf');
+    }
+
+
+
     
     public function show($id){
 		$resp= Responsabl::find($id);

@@ -44,10 +44,6 @@ class Curso extends Model
     }
 
 
-
-
-
-
     public function leccions()
     {
         return $this->hasMany(Leccion::class);
@@ -65,11 +61,11 @@ class Curso extends Model
 
 
 
-    //POR VALIDAR
+    //POR VALIDAR arroja un solo regist
     
     // public function parts()
     // {
-    //     return $this->hasManyThrough(Participant::class, Incription::class, 'part_id');
+    //     return $this->hasManyThrough(Participant::class, Incription::class, 'part_id','id');
     // }
 
 

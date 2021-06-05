@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use PDF;  //download
 use App\Participant;
 use App\Incription;
 use App\Profession;
@@ -48,6 +49,18 @@ class ParticipantsComponent extends Component
 		
 		
 	}
+
+   public function pdf(){
+    	$parts = Participant::all();
+
+
+    	$pdf = PDF::loadView('livewire.participants-pdf',compact('parts'));
+        return $pdf->setPaper('a4', 'landscape')->download('Download-pdf');
+        // setPaper('a4', 'landscape') para pasar a horizontal
+    }
+
+
+
 
 	public function show($id){
 		$part= Participant::find($id);
@@ -102,7 +115,8 @@ class ParticipantsComponent extends Component
     	// $this->validate($requestPart->rules(), $requestPart->messages());
 		$this->validate(['cedula' => 'required|numeric|unique','name'=>'required','last_name'=>'required','email' =>'required|email']); 
 	
-		                                           
+		            Route::get('/downloadpdf',[ComponentPdf::class,'downloadpdf']);
+                               
 		$part = Participant::create([
 		'cedula' => $this->cedula,
 		'name' => $this->name,	
@@ -205,6 +219,14 @@ class ParticipantsComponent extends Component
 		request () -> session () -> flash ('alert','Datos Eliminado');	
 			
 	}
+
+
+
+
+
+
+
+
 
 
 

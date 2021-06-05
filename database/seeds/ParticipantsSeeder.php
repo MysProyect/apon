@@ -19,6 +19,6 @@ class ParticipantsSeeder extends Seeder
         
     	DB::table('participants')->truncate();
         
-       factory(Participant::class, 15)->create();
+       factory(Participant::class, 3)->create();
     }
 }

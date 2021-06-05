@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use Livewire\ResponsablsComponent;
-use Livewire\ParticipantsComponent;
-use Livewire\MenuCursosInscComments;
+//use Livewire\ResponsablsComponent;
+use App\Http\Controllers\Livewire\ParticipantsComponent;
+use App\Http\Controllers\Livewire\ResponsablsComponent;
 use Livewire\InscriptionComp;
+use Livewire\MenuCursosInscComments;
 use Livewire\AdmMensaj;
+use Livewire\CompContactanos;
 // use Illuminate\Support\Facades\Email;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use App\Mail\ContactanosMailable;
@@ -15,8 +17,6 @@ use App\Role;
 // //---------USER
 Auth::routes();
 Auth::routes(['verify' => true]);
-
-
 Route::get('/auth/registrarse', function(){
  	$roles = App\Role::all();
  	$quests = App\Question::all();
@@ -24,28 +24,11 @@ Route::get('/auth/registrarse', function(){
  	return view('auth.register',compact('roles','quests','profs'));
 })->name('register');
 
+
 Route::post('/Registrar', 'Auth\RegisterController@create')->name('saveregist');
 Route::get('/auth/AdmUsers/tool', 'Auth\RegisterController@index')->name('AdmUser')->middleware('verified');
 Route::get('/auth/AdmUser/detalle/{id}', 'Auth\RegisterController@ver')->name('ver')->middleware('verified');
 Route::post('/auth/AdmUser/detalle/{id}', 'Auth\RegisterController@statud')->name('statud')->middleware('verified');
-
-
-
-
-Route::get('/img', function () {
-    return view('img');
-});
-
-
-
-Route::get('/search', function () {
-    return view('search');
-});
-
-
-
-
-
 
 
 Route::get('/', function () {
@@ -59,9 +42,15 @@ Route::get('/nosotros', function () { //oculto layouts.app
 })->name('nosotros');
 
 
-Route::get('/contactanos', function () {
-    return view('Menu.contactanos');
-})->name('contactanos');
+
+// Route::get('/contactanos', function () {
+//     return view('Menu.contactanos');
+// })->name('contactanos');
+Route::get('/contactanos',[CompContactanos::class])->name('contactanos');
+
+
+
+
 
 
 Route::get('/aula-virtual', function() {
@@ -106,6 +95,29 @@ Route::put('/edit-curs/{id}','CursController@update')->name('UpCurso')->middlewa
 Route::post('/edit-curs/{id}','CursController@statud')->name('statud')->middleware('verified');
 // Route::resource('post','PostController');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //rutas livewire Protegidas (ADMIN)
 Route::middleware('auth:web')->group(function () { //esta dos veces protegidas
 
@@ -113,18 +125,46 @@ Route::middleware('auth:web')->group(function () { //esta dos veces protegidas
 		return view('Admin.tool');
 	})->name('Admin')->middleware(['auth','verified']);
 
+
+
+
+
+
+
     Route::get('/Responsabls',function(){
 		return view('Admin.responsabls/index');
-	})->name('resp-livew')->middleware(['auth','verified']);
-	                           	
+	})->name('resp-livew')->middleware(['auth','verified']);	
+
 	Route::get('/Participants',function(){	
 		return view('Admin.participants.index');
 	})->name('part-livew')->middleware(['auth','verified']);
- 	
+
 
 	Route::get('/Admin-class', function() {
 		return view('Admin.Class.index');
 	})->name('class')->middleware(['auth','verified']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 	Route::get('/admin-inscription',function(){
@@ -132,20 +172,54 @@ Route::middleware('auth:web')->group(function () { //esta dos veces protegidas
 		return view('Admin.Inscrip.index');
 	})->name('insc-auth')->middleware(['auth','verified']);
 
+	
 	Route::get('/Mensajes',function(){
 		//$reg = App\Incription::with('curs')->get();		
 		return view('Admin.Mensaj.index');
 	})->name('mensajs')->middleware(['auth','verified']);
+	//Route::get('/admin.mensajes',[AdmMensaj::class]);
 	
 
 	Route::get('/Admin.inscription', InscriptionComp::class,'destroy');
-		//RUTAS PDF
+
+	Route::get('/list-parts',[ParticipantsComponent::class,'pdf']);
+	Route::get('/list-resps',[ResponsablsComponent::class,'pdf']);
+
+	//Route::get('/Admin.inscription/{id}', InscriptionComp::class,'pdf')->name('ConfPDF');	
 	Route::get('/Admin.inscription/{id}', 'PdfController@ConfPDF')->name('ConfPDF');
-	Route::get('/Participantes', 'PdfController@ExpPart')->name('ExpPart');
-	Route::get('/Respons|Facilitadores', 'PdfController@ExpResp')->name('ExpResp');
 	Route::get('/ExpCurso', 'PdfController@ExpCurso')->name('ExpCurso');
+
+
     
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

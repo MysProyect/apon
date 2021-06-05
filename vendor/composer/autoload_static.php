@@ -595,6 +595,7 @@ class ComposerStaticInitd1a21461b9e1ba7dc83a12adec706998
         'App\\Mail\\ContactanosMaillable' => __DIR__ . '/../..' . '/app/Mail/ContactanosMaillable.php',
         'App\\Message' => __DIR__ . '/../..' . '/app/Message.php',
         'App\\Participant' => __DIR__ . '/../..' . '/app/Participant.php',
+        'App\\People' => __DIR__ . '/../..' . '/app/People.php',
         'App\\Profession' => __DIR__ . '/../..' . '/app/Profession.php',
         'App\\Profile' => __DIR__ . '/../..' . '/app/Profile.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

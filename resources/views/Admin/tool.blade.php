@@ -63,7 +63,7 @@
 			</div>
 
 				<div   title="Mensajes" align="center">
-		<a href="{{ route('mensajs')}}" title="Adm. mensajes" class="img-tool-admin-msj"> 
+		<a href="{{ route('mensajs')}}" title="Adm. mensajes | answer" class="img-tool-admin-msj"> 
 			<img src="{{ asset('images/mensajes.png')}}" >
 		</a> 
 	</div> 	

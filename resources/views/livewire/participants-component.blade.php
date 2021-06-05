@@ -1,4 +1,4 @@
-<div  style="display:flex; " class="container ">
+	<div  style="display:flex; " class="container ">
     @if($view)
 	    <div style="margin-right:2%;" align="center">
 			@include("Admin.participants.$view") 
@@ -10,7 +10,10 @@
 		<div style="width: 100%;">
 			@include('Admin.participants.table')   
 		</div>
+	
 	@endif
 
 
 </div>
+
+

@@ -35,23 +35,29 @@ class DatabaseSeeder extends Seeder
     DB::table('incriptions')->truncate(); 
         DB::table('incriptions')->insert([
                 'curso_id' => rand(1,5), 
-                'part_id' => rand(1,15),
+                'part_id' => rand(1,3),
+                'conf' => rand(0,1),                
+                'created_at' => now (),
+                'updated_at' => now ()
+        ]);
+        DB::table('incriptions')->insert([
+                'curso_id' => rand(1,5), 
+                'part_id' => rand(1,3),
+                'conf' => rand(0,1),
+                'created_at' => now (),
+                'updated_at' => now ()
+        ]);
+        DB::table('incriptions')->insert([
+                'curso_id' => rand(1,5), 
+                'part_id' => rand(1,3),
                 'conf' => rand(0,1)
         ]);
         DB::table('incriptions')->insert([
                 'curso_id' => rand(1,5), 
-                'part_id' => rand(1,15),
-                'conf' => rand(0,1)
-        ]);
-        DB::table('incriptions')->insert([
-                'curso_id' => rand(1,5), 
-                'part_id' => rand(1,15),
-                'conf' => rand(0,1)
-        ]);
-        DB::table('incriptions')->insert([
-                'curso_id' => rand(1,5), 
-                'part_id' => rand(1,15),
-                'conf' => rand(0,1)
+                'part_id' => rand(1,3),
+                'conf' => rand(0,1),
+                'created_at' => now (),
+                'updated_at' => now ()
         ]);
     //ejecutar seeder una sola vez de lo contrario descom linea e ingresar registros manualmente
     DB::statement('SET FOREIGN_KEY_CHECKS = 1;');

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incription extends Model
 {
+
+
       protected $table = 'incriptions';
       protected $fillable = [ 'curso_id', 'part_id','conf','user_conf'];
       
@@ -18,12 +20,17 @@ class Incription extends Model
 		public function part()
 		{
 			return $this->belongsTo(Participant::class);
+
 		}
 
-    	public function insc()
+
+
+
+    	public function curso()
     	{
         	 return $this->belongsTo(Curso::class);
     	}
+
 
     	// public function scopePublished($query){
      //    	return $query->where('conf', 1);
@@ -44,12 +51,4 @@ class Incription extends Model
  //    }
 
 
-
-
-		//POR VALID
-		
-		// public function cur()
-		// {
-		// 	return $this->hasOne(Curso::class);
-		// }
 }

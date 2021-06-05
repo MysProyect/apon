@@ -50,6 +50,7 @@ return array(
     'App\\Mail\\ContactanosMaillable' => $baseDir . '/app/Mail/ContactanosMaillable.php',
     'App\\Message' => $baseDir . '/app/Message.php',
     'App\\Participant' => $baseDir . '/app/Participant.php',
+    'App\\People' => $baseDir . '/app/People.php',
     'App\\Profession' => $baseDir . '/app/Profession.php',
     'App\\Profile' => $baseDir . '/app/Profile.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

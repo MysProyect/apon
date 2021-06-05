@@ -17,7 +17,7 @@
 		<img src="{{asset('images/Apon.png')}}" class="apon" >	
 	</div> 
    	<div  style="margin-left: 5%;" class="img-write" >
-	    <a class="" href="{{ route('contactanos') }}" data-toggle="modal" data-target="#contacModal" class="img-menu-2">
+	    <a class="" href="{{ url('contactanos') }}" data-toggle="modal" data-target="#contacModal" class="img-menu-2">
 	    <img src="{{asset('images/icons/write.png')}}" title="Contactacnos" > </a>
 	</div>	
 </div>

@@ -45,9 +45,14 @@
                </div>     
       @endforeach
     <input type="text" wire:model="CursSelec" name="curso" style="visibility: hidden;" value="{{$CursSelec->id}}">
+   
+
     <div align="center">  
-      <a href="{{route('ConfPDF',$CursSelec->id)}}" class="nav-link">Exportar<img src="{{asset('images/icons/PDF.png')}}" class="img-icon"></a>
+      <a href="{{route('ConfPDF',$CursSelec->id)}}" class="nav-link" title="Ver | download"><img src="{{asset('images/icons/PDF.png')}}" class="img-icon"></a>
     </div>
+
+
+
 @else
   <div class="text-center text-danger display-6">'0' regs por conf. </div>
 @endif

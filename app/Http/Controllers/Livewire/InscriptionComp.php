@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
-
+use PDF;  //download
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 

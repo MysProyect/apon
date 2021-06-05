@@ -47,7 +47,7 @@
         </a>       
       </li>
       &nbsp;
-      <li class=" nav-item {{ request()->routeIs('contactanos') ? 'active' : ''}} {{ request()->routeIs('welcome') ? 'd-lg-none' : ''}} {{ request()->routeIs('contactanos') ? 'd-lg-none' : ''}}"  >        
+      <li class=" nav-item {{ request()->routeIs('welcome') ? 'd-lg-none' : ''}} {{ request()->routeIs('contactanos') ? 'd-lg-none' : ''}}"  >        
         <a class="" href="{{ route('contactanos') }}" data-toggle="modal" data-target="#contacModal"  style="cursor: pointer;">
         <img src="{{asset('images/icons/write.png')}}"  class="img-write-link" title="Contactacnos">
         </a>

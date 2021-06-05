@@ -1,38 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Inscritos</title>
-	 <link href="{{ asset('css/styles.css') }}" rel="stylesheet"> 
-   <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-	<div style="margin-top: 0"><img src="images/Apon.png"></div>
-<div style="color:blue; font-size: 2rem;" align="center">{{$curso->title}}</div>
+	<div align="center">
+		<img src="images/Apon.png" width="100">
+	</div><br><br>
+<div class="text-center disply-4 text-primary" align="center">
+	{{$curso->title}}
+</div>
 
-<div style="color: blue; font-size: 1.5rem; font-weight: bold; padding-left: 5%;">Listado de Inscritos</div>
+<div class="text-center disply-3">Listado de Inscritos</div>
 
 <div align="right" style="margin-right: 5%;">leyenda: 
-	<span style="color: #9cf7b9; font-size: 5rem;">.</span>
+	<span  style="color: blue; font-size: 5rem;">.</span>
 		<span style="color: black; font-size: 0.5rem;">confirmado</span> 
 	<span style="color: #f3a08e; font-size: 5rem;">.</span>
 		<span style="color: black; font-size: 0.5rem;">No confirmado</span>
 </div>
-<ul>
-	@foreach($All_inscs as $insc)
-	
-			@foreach ($parts as $part)
-				@if($part->id == $insc->part_id)
-					@if ($insc->conf == 1)
-						<li style="list-style: none; background: #9cf7b9;">{{ $part->name }} {{ $part->last_name }} </li><br>
-					@else
-						<li style="background:  #f3a08e ; list-style: none; ">{{ $part->name }} {{ $part->last_name }} </li><br>
-					@endif
-				@endif
-			@endforeach
-		
 
-		@endforeach
-</ul>
+<div align="center" class="table table-borde table-sm">
+	<table class="table">   		
+			<thead class="thead-dark"> 			
+			<tr>   
+				<th>#</th>
+				<th>Name and Surname </th>
+			</tr>
+		</thead>
+		 <?php $cont = 1; ?>		
+		<tbody>
+			@foreach($inscs as $insc)
+			@foreach($parts as $part)
+				@if($part->id == $insc->part_id)
+			<tr>
+				<td>{{$cont}}</td>				
+					@if ($insc->conf == 1)
+						<td style="color: blue">{{$part->name}} {{$part->last_name}}</td>
+					@else
+						<td style="color: #f3a08e;">{{$part->name}} {{$part->last_name}}</td>
+					@endif		
+			</tr>
+			@endif
+			@endforeach
+			<?php $cont= $cont+1; ?>
+			@endforeach	
+		</tbody>
+	</table>
+</div>
 
 </body>
 </html>

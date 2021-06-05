@@ -69,11 +69,15 @@
       <div style="color:blue;">
 			{{ $parts->links() }}
      </div> 
-     <div align="right">
-     	 <a href="{{route('ExpPart')}}">
-      	<img src="{{asset('images/icons/impress.png')}}">Exportar
+  
+    <div align="right" class="exp">
+     <a href="{{url('list-parts')}}">
+      	<img src="{{asset('images/icons/impress.png')}}" title="Exportar">
       </a>
-     </div>
+    </div>
+
+    <<!-- img src="{{asset('images/icons/impress.png')}}" class="cursor" wire:click="downloadpdf"> -->
+ 
 @else
 	<div align="center"  class="text-center text-danger display-5">No hay registros</div>
 @endif	

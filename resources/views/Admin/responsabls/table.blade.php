@@ -65,11 +65,12 @@
       <div style="color:blue;">
 			{{ $resps->links() }}
      </div> 
-     <div align="right">
-     	 <a href="{{route('ExpResp')}}">
-      	<img src="{{asset('images/icons/impress.png')}}">Exportar
-      </a>
-     </div>
+
+    <div align="right" class="exp">
+	     <a href="{{url('list-resp')}}">
+	      	<img src="{{asset('images/icons/impress.png')}}" title="Exportar">
+	      </a>
+    </div>
 @else
 	<div align="center"  class="text-center text-danger display-5">No hay registros</div>
 @endif	
