@@ -1,29 +1,28 @@
-	<small class="text-muted display-6">Información personal</small>
-	<div class="form-gruop info">
-		<input type="text" wire:model="cedula"  class="form-control text-bold" style="color: blue; font-size:2rem;" autofocus required placeholder="Cedula" onkeyUp="return ValNumero(this);" wire:change="verif"> 
-			@error('cedula')
-				<label class="alert-danger">Cedula Obligarotia</label>
-			@enderror
-
+	<small class="title-op">Información personal</small>
+	<div class="form-gruop">
+		<input type="text" wire:model="cedula"  class="form-control text-bold"  autofocus required placeholder="Cedula" onkeyUp="return ValNumero(this);" wire:change="verif"> 
+		
+	</div>
+ <!--   @if (session('mensaje'))
+			<div class="alert alert-success">             
+				<small>{{ session('mensaje') }}  </small>
+			</div>
+		@endif
+ -->
+    <div class="form-group" >
 		<input type="text"   wire:model.lazy="name" class="form-control"  autocomplete="on" placeholder="Nombre(s)"  > 
 	
 		<input type="text" wire:model.lazy="last_name"  class="form-control" autocomplete="on"  placeholder="Apellidos(s)">
 	
 	</div>
 
-
 	
-	<div align="center">
-		<img src="{{asset('images/icons/contact.png')}}" class="img-contac">
-	</div>  
-   <small class="text-muted display-6">Información de contacto</small>  
+	<img src="{{asset('images/icons/contact.png')}}" class="img-contac"><br>   
+   <small class="title-op">Información de contacto</small>  
     <div class="info form-group">
       		 			
 		<DIV>E-mail
 			<input type="email" class="form-control" wire:model="email"  autocomplete="on"> 
-			@error('email')
-				<div class="alert-danger"> Email no valido</div>
-			@enderror
 		</DIV>
 		<div>Telefono
 			<input type="text" class="form-control"  wire:model="phone"  autocomplete="on"  onkeyUp="return ValNumero(this);" >  
@@ -35,15 +34,18 @@
 	            
 	           
 	 </div>
-	<div class="form-group" align="center">
+	 	@error('cedula')
+			<div class="alert-danger">Cedula Obligarotia</div>
+		@enderror
 	 	@error('name')
 			<div class="alert-warning">Nombre Obligatorio</div>
 		@enderror
-		@error('last_name')
+			@error('last_name')
 			<div class="alert-warning">Apellido Obligatorio</div>
 		@enderror
-	</div>
-		
+		@error('email')
+			<div class="alert-danger"> Email no valido</div>
+		@enderror
 
 	
 	

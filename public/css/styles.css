@@ -234,7 +234,8 @@ th .img-show-edit-2{ width: 20%; }
 .img-contac{ width: 60%; }
 /*.img-login{width: 30%;}*/
 
-.img-msn img{ width: 10%; height: 5%;}
+.img-msn{ width: 20%; height: 10%;}
+
 
 
 .img-contac-home{width: 70%;}
@@ -302,11 +303,11 @@ th .img-show-edit-2{ width: 20%; }
 		color: #000066; 
 		letter-spacing: 2pt;}
 
-.title-op{color:#BFBFBF; font-size: 1.5rem;}
+/*.title-op{color:#BFBFBF; font-size: 1.5rem;}*/
 
 @media screen and (max-width:800px) {
 	.none{ display: none; }
-	.info{ font-size:0.5rem;}
+	.info{ font-size:2rem;}
 
 }
 .errores-input input {background: #f1a595;}

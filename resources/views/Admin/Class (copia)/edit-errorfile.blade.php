@@ -33,8 +33,7 @@
 		</div>	
 	<br>
 		@if($lec->urlExt)
-			  <iframe width="560" height="315" src="<?php echo $lec->urlExt ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			  <img src="{{asset('images/icons/delet.png')}}" wire:click="delet_url({{$lec->id}})" title="Eliminar" style="cursor: move; width: 3%;">
+			  <iframe width="560" height="315" src="<?php echo $lec->urlExt ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <img src="{{asset('images/icons/delet.png')}}" wire:click="delet_url({{$lec->id}})" title="Eliminar" style="cursor: move; width: 3%;">
 		@endif
 		<div class="container-2">
 			<img src="{{asset('images/icons/documnt.svg')}}" style="width: 10%; height: 2%;" title="document's">

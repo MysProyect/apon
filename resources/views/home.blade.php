@@ -4,7 +4,7 @@
  <div style="display: flex;  margin-top: 2%;">
 
 	<div style="margin-right: 1%;">
-		<span class="text-info">Documentacion</span><br>
+		<span class="text-info">Guia de usuario</span><br>
 		<a target="_blank" href="{{asset('APON.pdf')}}">
 			<img src="{{asset('images/icons/PDF.png')}}" title="ver/descargar" class="pdf"> 
 		</a>
@@ -30,6 +30,8 @@
 			</a> 
 		</div>   
 	</div> -->
+	<iframe width="300" height="200" src="https://www.youtube.com/embed/QBTDiQjCjOg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- 	<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fvirginia.palma.121%2Fposts%2F10206527217476881&show_text=true&width=500" width="500" height="188" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe> -->
 
 <div class=" change text-center" >     	
 	<a href="{{ route('cursos-menu') }}">

@@ -113,7 +113,9 @@ class ParticipantsComponent extends Component
     public function store() {
     	// $requestPart = new RequestStorePart();
     	// $this->validate($requestPart->rules(), $requestPart->messages());
-		$this->validate(['cedula' => 'required|numeric','name'=>'required','last_name'=>'required','email' =>'required|email']); 
+		$this->validate(['cedula' => 'required|numeric|unique','name'=>'required','last_name'=>'required','email' =>'required|email']); 
+	
+		            Route::get('/downloadpdf',[ComponentPdf::class,'downloadpdf']);
                                
 		$part = Participant::create([
 		'cedula' => $this->cedula,
@@ -127,7 +129,7 @@ class ParticipantsComponent extends Component
 			$part->user_created = Auth::user()->id;
 			$part->save();		
 		}
-		$this->emit('save');
+//		$this->emit('save');
 		$this->clear();$this->clear2();$this->close();
 		return back()->with('mensaje','Datos Registrados');			
 	}
@@ -181,7 +183,6 @@ class ParticipantsComponent extends Component
 			$part->save();		
 		}
 		$this->update = true;
-		$this->emit('save');
 		$this->clear();$this->close();
 		return back()->with('mensaje','Datos Actualizados');	
 	}
