@@ -6,8 +6,8 @@
 			<span class="text-primary display-7 text-center">'consulte al administrador'</span>
 		</label>
 	@endif
-	<label align="right" class="cursor img-AddNew">
-		<img src="{{asset('images/icons/AddNew.png')}}"  wire:click="create" data-toggle="modal" data-target="#NewRespModal">
+	<label align="right" style="cursor: pointer;" class="img-AddNew">
+		<img src="{{asset('images/icons/AddNew.png')}}"  wire:click="create" >
 	</label > 
 	
 </div>
@@ -52,7 +52,7 @@
 		<tr @if($cont % 2 == 0) style="background: #ADD8E6" @endif >
 			<td   wire:click="show({{ $resp->id }})" title="verr" class="nav-link-2 cursor" data-toggle="modal" data-target="#showModal" >{{ ucfirst(trans($resp->name)) }} {{ ucfirst(trans($resp->last_name)) }}</td>
 			<td>{{ $resp->email }}</td>
-            <td><img src="{{asset('images/icons/editar.png')}}" width="30" wire:click="edit({{ $resp->id }})" class="cursor" data-toggle="modal" data-target="#EditRespModal">  
+            <td><img src="{{asset('images/icons/editar.png')}}" width="30" wire:click="edit({{ $resp->id }})" class="cursor">  
 				
 				&nbsp;&nbsp;&nbsp;<img src="{{asset('images/icons/delet.png')}}"  wire:click="conf({{ $resp->id }})" width="30" class="cursor" title="eliminar">
 			</td>  
@@ -75,10 +75,8 @@
 	<div align="center"  class="text-center text-danger display-5">No hay registros</div>
 @endif	
  
- 	<!-- Modals -->
- 	@include("Admin.responsabls.create")
- 	@include("Admin.responsabls.edit")
-	@include("Admin.responsabls.show") 
+ 
+		@include("Admin.responsabls.show") 
 
     
  </div>

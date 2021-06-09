@@ -17,6 +17,8 @@
    <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}" />
       @livewireStyles 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Alpide activas autofocus livewire -->
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
  </head> 
 
 
@@ -222,6 +224,19 @@
         });
          window.livewire.on('save', () => {
             $('#contacModal').modal('hide');
+        });
+         window.livewire.on('save', () => {
+            $('#NewRespModal').modal('hide');
+        });
+          window.livewire.on('save', () => {
+            $('#EditRespModal').modal('hide');
+        });
+        
+         window.livewire.on('save', () => {
+            $('#NewPartModal').modal('hide');
+        });
+          window.livewire.on('save', () => {
+            $('#EditPartModal').modal('hide');
         });
 
 

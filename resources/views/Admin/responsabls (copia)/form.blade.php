@@ -1,17 +1,25 @@
 	 
-	 <small class="text-muted display-6">Información personal</small>
-	
-	     <div  class="form-gruop info">
-			<input type="text" wire:model="cedula"  class="form-control" style="color: blue; font-size:2rem;"  autofocus required placeholder="Cedula" onkeyUp="return ValNumero(this);" wire:change="verif"> 
+	 <small class="title-op">Información personal</small>
+		<div class="form-gruop">
+			<input type="text" wire:model="cedula"  class="form-control text-bold"  autofocus required placeholder="Cedula" onkeyUp="return ValNumero(this);" wire:change="verif"> 
 			@error('cedula')
 				<label class="alert-danger">Cedula Obligarotia</label>
 			@enderror
-	 
+	     </div>
+      <!--         @if (session('mensaje'))
+					<div class="alert alert-success">             
+						<small>{{ session('mensaje') }}  </small>
+					</div>
+				 @endif -->
 
-			<input type="text"   wire:model="name" class="form-control"  autocomplete="on" placeholder="Nombre(s)">   
+	     <div  class="form-gruop">
+			<input type="text"   wire:model="name" class="form-control"  autocomplete="on" placeholder="Nombre(s)"> 
+	         
 			<input type="text" wire:model="last_name" class="form-control" autocomplete="on" placeholder="Apellidos(s)">
-	
-			 <div  class="text-prymary display-6">Profession: 
+		</div>
+
+		<div class="form-gruop">
+			 <div  .class="title-op">Profession: 
 			 	<select wire:model="profession_id">
 			 		<option value="">Seleccione</option>
 			 		@foreach($professions as $profession)
@@ -21,10 +29,8 @@
 			 </div>
 		</div><br> 
 
-	 	<div align="center">
-	 		<img src="{{asset('images/icons/contact.png')}}" class="img-contac">
-	 	</div>
-        <small class="text-muted display-6">Información de contacto</small>       
+	 	<img src="{{asset('images/icons/contact.png')}}" class="img-contac"><br>
+        <small class="title-op">Información de contacto</small>       
         <div class="info form-gruop">   		 			
 			<DIV>E-mail
 				<input type="email"  wire:model="email"  autocomplete="on" class="form-control"> 

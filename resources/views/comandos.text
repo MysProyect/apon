@@ -1,0 +1,7 @@
+para eliminacion forsosa in model DB
+use Iluminate\Database\Eloquent\SoftDeletes;
+
+clases nomb-class extends Model{
+	use SoftDeletes;	
+
+}

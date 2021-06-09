@@ -7,7 +7,7 @@
 		</label>
 	@endif
 	<label align="left" class="img-AddNew cursor">
-		<img src="{{asset('images/icons/AddNew.png')}}"  wire:click="create" data-toggle="modal" data-target="#NewPartModal">
+		<img src="{{asset('images/icons/AddNew.png')}}"  wire:click="create" >
 	</label > 
 	
 </div>
@@ -55,7 +55,7 @@
 		<tr @if($cont % 2 == 0) style="background: #ADD8E6" @endif align="center" >
 			<td wire:click="show({{ $part->id }})" title="ver" class="nav-link-2 cursor" data-toggle="modal" data-target="#showModal" >{{ $part->name}} {{ $part->last_name}}</td>
 			<td>{{ $part->email }}</td>
-            <td><img src="{{asset('images/icons/editar.png')}}" width="30"  wire:click="edit({{ $part->id }})" class="cursor" title="Actualizar" data-toggle="modal" data-target="#EditPartModal">
+            <td><img src="{{asset('images/icons/editar.png')}}" width="30"  wire:click="edit({{ $part->id }})" class="cursor" title="Actualizar">
 
 				&nbsp;&nbsp;&nbsp;<img src="{{asset('images/icons/delet.png')}}"  wire:click="conf({{ $part->id }})" width="30" class="cursor" title="eliminar">
 
@@ -82,12 +82,8 @@
 	<div align="center"  class="text-center text-danger display-5">No hay registros</div>
 @endif	
 
-		<!-- Modals -->
+		
     
-			@include("Admin.participants.create") 
-
-			@include("Admin.participants.edit") 
-
 
 			@include("Admin.participants.show") 
 

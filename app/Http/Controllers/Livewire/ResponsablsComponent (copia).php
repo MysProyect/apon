@@ -102,7 +102,7 @@ class ResponsablsComponent extends Component
 	}
      
     public function store() {
-		$this->validate(['cedula' => 'required|numeric']);
+		$this->validate(['cedula' => 'required|numeric|max:10']);
 		 if ($this->email){
 			  $this->validate([ 'email' => 'email']);  			 
 			}	
@@ -125,8 +125,8 @@ class ResponsablsComponent extends Component
 			//$this->cedula = '';
 			//$this->name= '';
 			//$this->last_name= '';
-		$this->close();
 		$this->emit('save');
+		$this->close();
 		return back()->with('mensaje','Datos Registrados');	
 			
 	}
@@ -182,19 +182,8 @@ class ResponsablsComponent extends Component
 			$resp->save();		
 		} 
 		$this->close(); 
-		$this->emit('save');
 		return back()->with('mensaje','Datos Actualizados');	
 	}
-
-
-
-
-
-
-
-
-
-
 	
   public $rol, $resp_curs;   
 

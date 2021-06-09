@@ -21,16 +21,11 @@
 								@if($lecN)
 									<label class="display-6 text-primary">Leccion
 										<input type="text" wire:model="leccion" size="3" placeholder="Nª"  wire:change="verif" class="btn-warning text-center" onkeyUp="return ValNumero(this);" style="padding: 2%; font-size: 2rem; ">
-							   		</label><br>
-							   		@if($leccion)
-										<img src="{{asset('images/icons/icon-ir.png')}}" width="50">
-									@endif	
-
+							   		</label>
 									@error('leccion')
 									   	<small class="alert alert-danger">indique leccion</small> 
 									@enderror	
-								@endif	
-								
+								@endif		
 							</div>
 							<div>
 							@if($create)
@@ -54,11 +49,10 @@
 					&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 				<div class="img-curs-2">
 					@if($curso_id)
-      				  <?php	$exists = Storage::disk('local')->has($img); ?>
-						@if($exists)				
-						   	<img src="{{ Storage::url("$img") }}" alt="imagen no disponible">
+						@if($img)				
+						   	<img src="{{ Storage::url("$img") }}" alt="imagen no disponible" /> 
 						@else
-							<img src="{{$img}}">	
+							<img src="{{ asset('images/no-img.png') }}" />
 						@endif
 					@endif
 				</div>
