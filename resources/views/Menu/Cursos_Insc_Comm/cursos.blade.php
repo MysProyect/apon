@@ -1,35 +1,43 @@
 <!-- VIEW CURSOS & COMMENT-->
 
-  <div style="" align="center">
+  <div style="" align="center" >
     <div>  
       <strong class="text-center text-primary-2 display-4 spad">Cursos </strong>
     </div>
 
-      @if (session('mensaje'))
-        <div class="alert alert-success">   {{ session('mensaje') }}   </div>
-      @endif 
-@if ($cursos->count())
-  <div class="flex shearch">
-    <img src="{{asset('images/icons/shearch.png')}}">
-    <input type="text"   wire:model="shearCurs"  placeholder="Buscar por titulo" class="form-control">    
-  </div>
-  @foreach( $cursos as $curso)
-
-  
-    <div class="list-curso">
-     		<p class="display-5 text-primary text-center text-uppercase" style="width: 80%;" >{{ $curso->title}}</p>				   
- 	    <div align="center" class="img-curs-menu">  
-
-
-      <?php  $exists = Storage::disk('local')->has($curso->img); ?>
-      <div>
-           @if ($exists)
-              <img src="{{ Storage::url("$curso->img") }}" class="img-curs-4"/>
-           @else
-            
-            <img src="{{$curso->img}}" class="img-curs-4">               
-           @endif
+    @if (session('mensaje'))
+      <div class="alert alert-success">  
+        {{ session('mensaje') }}  
       </div>
+    @endif 
+
+    @if ($cursos->count())
+      <div class="flex shearch">
+        <img src="{{asset('images/icons/shearch.png')}}">
+        <input type="text"   wire:model="shearCurs"  placeholder="Buscar por titulo" class="form-control">    
+      </div>
+
+    @if (session('comment'))
+      <div class="alert alert-success">             
+        <label>{{ session('comment') }} </label>
+      </div>
+    @endif  
+
+   @foreach( $cursos as $curso)
+  
+      <div class="list-curso">
+     		<p class="display-5 text-primary text-center text-uppercase" style="width: 80%;" >
+          {{ $curso->title}}
+        </p>				   
+ 	      <div align="center" class="img-curs-menu">  
+         <?php  $exists = Storage::disk('local')->has($curso->img); ?>
+          <div>
+             @if ($exists)
+                <img src="{{ Storage::url("$curso->img") }}" class="img-curs-4"/>
+             @else            
+                <img src="{{$curso->img}}" class="img-curs-4">               
+             @endif
+          </div>
 
 
      <!--      @if($curso->img)          
@@ -52,36 +60,28 @@
     				  <p>Descripcion No disponible</p>
     			@endif
           @if($curso->inscs_count > 0)
-                <p class="display-7 text-center text-success"> {{ $curso->inscs_count }} participantes</p>   
+              <p class="display-7 text-center text-success"> {{ $curso->inscs_count }} participantes</p>   
           @endif
           @if($curso->duration)
               <small class="text-primary display-6"><br>duracion: {{$curso->duration}}</small>
           @endif
       	</div>
+        <div>
+          @include('Menu.Cursos_Insc_Comm.info_pago')
+        </div>
 
-     
-     <div style="display: flex;">
-        <div align="center" style="width: 100%;">
-          <input type="button" value="Participar | inscribirse"  wire:click="insc({{ $curso->id }})" class="btn btn-warning" style="">
-           <img src="{{asset('images/icons/inscripcion.png')}}" width="100" height="70">
-      </div>
+    <div style="display: flex;">       
 
-      <!-- button y modal -->
-      <div>
-        @include('Menu.Cursos_Insc_Comm.info_pago')
-      </div>  
-   </div>
+      <!-- button y modal -->      
 
-  	@if (session('comment'))
-      <div class="alert alert-success">             
-          <label>{{ session('comment') }}  </label>
-      </div>
-    @endif-->
+
 
       <!--VER COMMENTS-->
     <div align="left">
+   
       <details>
-  			<summary style="color: #0b6623;"><i class="fa fa-share"></i> See all Comments</summary>						
+  			<summary style="color: #0b6623; font-size: 1rem;"><i class="fa fa-share"></i> See all Comments</summary>	
+        				
   				<?php $Nro = Count($curso->comments); ?>
      			@if ($Nro>0)
           			<!-- 	<label> <i><b>{{$Nro}} comentarios</b></i></label><br> -->
@@ -106,17 +106,25 @@
   				 <small class="display-8">sin comentarios...</small>
   			  @endif   
         </details>
+        <br>      
+        <button wire:click="comment({{ $curso->id }})" class="btn btn-primary" data-toggle="modal" data-target="#CommentModal" >Comentar</button>  
+    </div>
     
-        <br>       
-       
-            <button wire:click="comment({{ $curso->id }})" class="btn btn-primary" data-toggle="modal" data-target="#CommentModal" >Comentar</button> 
-      
-        </div>
-  </div>
-  </div> <br><br>
+    <div>
+        <input type="button" value="Participar | inscribirse"  wire:click="insc({{ $curso->id }})" class="btn btn-warning" style="">
+        <img src="{{asset('images/icons/inscripcion.png')}}" width="70" >
+    </div>
+
+</div>
+
+  </div> 
+
+
+
+  <br><br>
    @endforeach
 
-     <div style="color:blue; margin-top: 10%;">
+     <div style="color:blue; margin-top: 5%;">
       {{ $cursos->links() }}
      </div>
     @include('Menu.Cursos_Insc_Comm.show-curso')

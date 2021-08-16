@@ -5,13 +5,13 @@
 
    <div class="modal-dialog modal-lg" role="document">
    
-    <div class="modal-content modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-header" id="exampleModalLabel">
           <div class="flex">
-            <div class="display-7 text-primary text-uppercase" >{{ $title}}</div>&nbsp;&nbsp;&nbsp;
+            <div class="display-5 text-primary text-uppercase" >{{ $title}}</div>&nbsp;&nbsp;&nbsp;
             <div>
               @if($img)
-                <img src="{{ Storage::url("$img") }}" alt="imagen no disponible" width="200" height="100"/>
+                <img src="{{ $img }}" alt="imagen No disponible" width="200" height="100"/>
               @else
                 <img src="{{ asset('images/no-img.png') }}" width="200" height="100"/>
               @endif
@@ -23,7 +23,7 @@
             </button>
         </div>
         <div class="modal-body" style="" align="left">       
-            <label style="margin-left: 10%; margin-right: 5%; " class="text-center display-7 ">{{$description}}</label>
+            <label style="margin-left: 10%; margin-right: 5%; " class="text-center display-5 ">{{$description}}</label>
         </div>
       @if($duration)
         <small class="text-primary display-6"><br>duracion: {{$duration}}</small>

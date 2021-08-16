@@ -13,12 +13,13 @@
 
 	@if($iniciar)
 	<div style=" margin-top: 5%;" class="form-group" align="center" >
-	    <div class="text-center"  >
-	      <small class="display-4"> Bienvenidos al</small> <br><small class="display-3 text-primary">Aula Virtual</small>
+	    <div>
+	      <small class="display-4"> Bienvenidos...</small> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small class="display-3 text-primary">Aula Virtual</small>
 	    </div>
-        <div class="text-center display-7" style=" margin-top: 2%; display: flex;" align="center">
-	      <label class="text-danger" ><i>Para continuar... esta seccion previamente debe estar inscripto en un de nuestros
-	      	 <a class="nav-link text-hover" href="{{ route('cursos-menu') }}" class="nav-link">cursos disponibles...</a></i>
+	    
+        <div class="" style=" margin-top: 2%;">
+	      <label class="display-6 text-danger" ><i>Para continuar... esta seccion previamente debe estar inscripto en uno de nuestros
+	      	 <a class="nav-link text-hover display-5" href="{{ route('cursos-menu') }}" class="nav-link">cursos disponibles...</a></i>
 	      </label> 
 	    </div>	
 

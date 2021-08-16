@@ -17,7 +17,15 @@ footer{ width:100%;   height: auto;  position: absolute; bottom: 0; color: black
  	.navbar-dark-2{ background:  #736f6e ; }
 }
 
-.list-curso{border-top: 2px solid; border-top-right-radius:10%; border-top-left-radius:10%; color:rgba( 202, 194, 193);  margin-top: 3%;}
+.list-curso{
+	border-top: 2px solid; 
+	border-top-right-radius:10%; 
+	border-top-left-radius:10%; 
+	color:rgba( 202, 194, 193);  
+	margin-top: 3%;
+}
+
+
 .bigicon {
     font-size: 3rem;
     color: #36A0FF; }
@@ -207,7 +215,7 @@ form.example::after {
 .img-menu{width: 30%; height: 20%;}
 .img-menu-2{width: 30%; height: 70%;}
 .img-write-link{ width: 30%; }
-.img-write a img{ width: 80%; }
+.img-write a img{ width: 60%; }
 .img-curs img{ width:50%; border-radius: 10%;}
 .img-curs-menu img{ width: 30%; border-radius: 5%;}
 .img-curs-admin img{ width: 200%; height: 400%; border-radius: 10%;}
@@ -234,7 +242,8 @@ th .img-show-edit-2{ width: 20%; }
 .img-contac{ width: 60%; }
 /*.img-login{width: 30%;}*/
 
-.img-msn img{ width: 10%; height: 5%;}
+.img-msn{ width: 20%; height: 10%;}
+
 
 
 .img-contac-home{width: 70%;}
@@ -247,6 +256,7 @@ th .img-show-edit-2{ width: 20%; }
 .img-salir{float: right;  width: 10%;}
 .img-salir-2 a img{width: 30%;}
 .img-clear, .img-close{width: 15%;}
+.img-close-2{width: 5%;}
  .img-close-2{width: 5%;}
 .img-av img{ width: 40; float: center; }
 .img-user-auth{width: 30%; }

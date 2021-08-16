@@ -5,7 +5,7 @@
       </div>
 @if($inputcedula)
 	 <div class="form-group"  style="margin-top: 3%; ">
-	 <img src="{{asset('images/icons/GIF/busc.gif')}}" /> 
+	 <img src="{{asset('images/GIF/busc.gif')}}" /> 
 	 		<!-- <input type="text" wire:model="curso_id" value="{{$curso_id}}" class="d-lg-none"> -->
 	 		<input type="text" wire:model="cedula"  class="display-5" placeholder="Ingrese cedula de Identidad" autofocus required  onkeyUp="return ValNumero(this);" wire:change="verif({{ $curso_id }})" autofocus style="text-align: center" />
 			@error('cedula')

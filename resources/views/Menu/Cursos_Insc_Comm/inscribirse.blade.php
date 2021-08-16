@@ -1,6 +1,6 @@
-<div class="container">
+<div >
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-10">
       <div class="card" style="padding-left: 2%; padding-right: 1%;">
         <div class="card-header title display-5 text-center text-uppercase" >{{ $curso->title}}</div>
           <div class="card-body">
@@ -86,7 +86,7 @@
 
 	    <div>
 	    	<img src="{{asset('images/icons/clear.png')}}" wire:click="default"   class="img-clear" style="cursor: pointer;"  title="borrar">
-	        <img src="{{asset('images/icons/close.png')}}" wire:click="close"   class=" img-close close" style="cursor: pointer;"  title="salir">
+	        <img src="{{asset('images/icons/close.png')}}" wire:click="close"   class=" img-close-2 close" style="cursor: pointer;"  title="salir">
 	    </div>
 
     @if (session('mensaje'))

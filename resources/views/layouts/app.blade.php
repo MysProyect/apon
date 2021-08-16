@@ -33,7 +33,7 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item {{ request()->routeIs('welcome') ? 'd-lg-none' : ''}}">
         <a class="navbar-brand" href="{{ route('welcome') }}">  
-          <img src="{{asset('images/Apon.png')}}" width="120" height="70" alt="Inicio" title="Inicio" style="margin-top: 40%;">
+          <img src="{{asset('images/Apon.png')}}" width="220" height="120" alt="Inicio" title="Inicio" style="margin-top: %;">
         </a>
       </li>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -55,10 +55,10 @@
         </a>
       </li>
 
-  <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+<!--   <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
   <input type="text" placeholder="Search.." name="search2">
   <button type="submit"><i class="fa fa-search"></i></button>
-</form>
+</form> -->
  </ul>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
@@ -180,7 +180,7 @@
 
 
 
-<div  class=" {{ request()->routeIs('welcome') ? 'background' : ''}}" style="margin-right: %; margin-left: 15%;" >	 
+<div  class=" {{ request()->routeIs('welcome') ? 'background' : ''}}"  >	 
 <!-- <div style="margin: 2%;"> -->
 	
 		 @yield('content')

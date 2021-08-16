@@ -239,6 +239,7 @@ class MenuCursosInscComments extends Component
 		]);
 		$this->default();
 		$this->emit('savecomment');
+		$this->mount();
 		session()->flash('comment', 'Nuevo comentario añadido...');			
  	}
 
